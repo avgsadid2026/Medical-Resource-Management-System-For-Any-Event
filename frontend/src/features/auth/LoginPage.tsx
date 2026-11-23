@@ -56,7 +56,7 @@ export function LoginPage() {
   const navigate = useNavigate();
 
   const [identifier, setIdentifier] = useState('e.vance@baust-demo.edu.bd');
-  const [password, setPassword] = useState('DemoPass123!');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberTerminal, setRememberTerminal] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -76,7 +76,7 @@ export function LoginPage() {
   const handleRoleSelect = (email: string) => {
     if (!email) return;
     setIdentifier(email);
-    setPassword('DemoPass123!');
+    setPassword('');
     setError(null);
   };
 
@@ -559,6 +559,8 @@ export function LoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter password for selected role"
+                    autoComplete="current-password"
                     className="w-full bg-transparent text-white font-body-md text-xs sm:text-sm pl-9 pr-10 py-2 rounded-xl outline-none placeholder:text-slate-500"
                   />
                   <button

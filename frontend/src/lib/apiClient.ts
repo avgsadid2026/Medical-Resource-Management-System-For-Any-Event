@@ -60,6 +60,13 @@ function invokeFallback<T>(path: string, method: string, body?: unknown): { data
     if (err instanceof Error && err.message === 'UNAUTHENTICATED') {
       throw new ApiError(401, 'UNAUTHENTICATED', 'Not authenticated.');
     }
+    if (err instanceof Error && err.message === 'INVALID_CREDENTIALS') {
+      throw new ApiError(
+        401,
+        'INVALID_CREDENTIALS',
+        'Invalid email/ID or password for the selected role.'
+      );
+    }
     throw err;
   }
 }

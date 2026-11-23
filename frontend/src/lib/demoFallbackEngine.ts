@@ -1,7 +1,16 @@
 import type { ApiMeta, AuthUser, UserRole } from '@/types/emrms';
 
-const STORAGE_KEY = 'medijigs_cloud_demo_db_v1';
-const SESSION_USER_KEY = 'medijigs_cloud_session_user_v1';
+const STORAGE_KEY = 'medijigs_cloud_demo_db_v2';
+const SESSION_USER_KEY = 'medijigs_cloud_session_user_v2';
+
+const DEFAULT_ROLE_PASSWORDS: Record<string, string> = {
+  'admin@baust-demo.edu.bd': 'Admin@Medijigs#2026',
+  'e.vance@baust-demo.edu.bd': 'Coord@Medijigs#2026',
+  't.hasan@baust-demo.edu.bd': 'Doctor@Medijigs#2026',
+  'f.yasmin@baust-demo.edu.bd': 'Nurse@Medijigs#2026',
+  'dispatch@baust-demo.edu.bd': 'Dispatch@Medijigs#2026',
+  'volunteer@baust-demo.edu.bd': 'Volunteer@Medijigs#2026',
+};
 
 interface DemoDb {
   users: Array<{
@@ -13,6 +22,7 @@ interface DemoDb {
     isActive: boolean;
     lastLoginAt: string | null;
     createdAt: string;
+    password?: string;
     doctorId?: string | null;
     nurseId?: string | null;
   }>;
@@ -942,12 +952,28 @@ export function handleDemoFallbackRequest<T>(
 
   if (pathname === '/auth/login' && method === 'POST') {
     const identifier = String(payload.identifier ?? '').trim().toLowerCase();
-    const matched =
-      db.users.find(
-        (u) =>
-          u.email.toLowerCase() === identifier ||
-          (u.staffCode && u.staffCode.toLowerCase() === identifier)
-      ) ?? db.users[1];
+    const enteredPassword = String(payload.password ?? '');
+    const matched = db.users.find(
+      (u) =>
+        u.email.toLowerCase() === identifier ||
+        (u.staffCode && u.staffCode.toLowerCase() === identifier)
+    );
+
+    if (!matched || !matched.isActive) {
+      throw new Error('INVALID_CREDENTIALS');
+    }
+
+    const expectedPassword =
+      matched.password ??
+      DEFAULT_ROLE_PASSWORDS[matched.email.toLowerCase()];
+
+    if (!enteredPassword || enteredPassword !== expectedPassword) {
+      throw new Error('INVALID_CREDENTIALS');
+    }
+
+    matched.lastLoginAt = new Date().toISOString();
+    saveDb(db);
+
     const authUser: AuthUser = {
       id: matched.id,
       email: matched.email,
@@ -1699,6 +1725,7 @@ export function handleDemoFallbackRequest<T>(
         isActive: true,
         lastLoginAt: null,
         createdAt: new Date().toISOString(),
+        password: payload.password ? String(payload.password) : 'Staff@Medijigs#2026',
       };
       db.users.push(created);
       saveDb(db);
