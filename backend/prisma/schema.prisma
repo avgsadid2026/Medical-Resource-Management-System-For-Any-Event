@@ -1,0 +1,629 @@
+// EMRMS — Event Medical & Resource Management System (Academic DBMS Prototype)
+// Complete 19-table normalized PostgreSQL schema (Revision 2 — Cycle-Free DAG)
+// NOTE: Custom SQL partial unique indexes, CHECK constraints, and audit_logs
+// immutability trigger are added in prisma/migrations/20261121000000_init/migration.sql
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum UserRole {
+  SUPER_ADMIN
+  MEDICAL_ADMIN
+  DOCTOR
+  NURSE
+  DISPATCHER
+  VOLUNTEER
+}
+
+enum StationType {
+  FIELD_POST
+  CENTRAL_DEPOT
+}
+
+enum StationStatus {
+  OPERATIONAL
+  HIGH_LOAD
+  FULL
+  CLOSED
+}
+
+enum BedStatus {
+  AVAILABLE
+  OCCUPIED
+  MAINTENANCE
+}
+
+enum DoctorDutyStatus {
+  ON_DUTY
+  CODE_RED
+  IN_TRANSIT
+  STANDBY
+  OFF_DUTY
+}
+
+enum NurseDutyStatus {
+  ON_DUTY
+  INTERCEPTING
+  STANDBY
+  OFF_DUTY
+}
+
+enum PatientSex {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum AttendeeRole {
+  STUDENT
+  VOLUNTEER
+  FACULTY
+  VISITOR
+}
+
+enum TriagePriority {
+  P1_IMMEDIATE
+  P2_URGENT
+  P3_MINOR
+  UNTRIAGED
+}
+
+enum IncidentStatus {
+  REPORTED
+  TRIAGE
+  OBSERVATION
+  ESCALATED
+  DISCHARGED
+}
+
+enum IncidentCategory {
+  HEAT
+  TRAUMA
+  RESPIRATORY
+  ALLERGY
+  GI
+  CARDIAC
+  OTHER
+}
+
+enum ClinicalNoteType {
+  REPORTED
+  FIELD_RESPONSE
+  STATION_TRANSFER
+  INTERVENTION
+  ASSESSMENT
+  DIAGNOSTIC_NOTE
+  DISCHARGE
+}
+
+enum EquipmentCategory {
+  AED
+  MONITOR
+  OXYGEN
+  SUCTION
+  DIAGNOSTIC
+  STRETCHER
+  OTHER
+}
+
+enum EquipmentStatus {
+  OPERATIONAL
+  IN_USE
+  LOW_BATTERY
+  MAINTENANCE
+  RETIRED
+}
+
+enum AmbulanceTier {
+  ALS_ICU
+  BLS
+  FIELD_4X4
+  MUTUAL_AID
+}
+
+enum AmbulanceStatus {
+  STANDBY
+  EN_ROUTE
+  ON_SCENE
+  RETURNING
+  MAINTENANCE
+}
+
+enum DispatchPriority {
+  CODE_RED
+  URGENT
+  STANDARD
+}
+
+enum DispatchStatus {
+  DISPATCHED
+  EN_ROUTE
+  ARRIVED
+  COMPLETED
+  CANCELLED
+}
+
+enum AlertSeverity {
+  P1_CRITICAL
+  P2_URGENT
+  BROADCAST
+}
+
+enum AlertStatus {
+  ACTIVE
+  INTERCEPTING
+  ON_SCENE
+  RESOLVED
+}
+
+// ============================================================================
+// GROUP 1: AUTH, SESSIONS & GOVERNANCE (Tables 1–4)
+// ============================================================================
+
+// Table 1: Staff & volunteer user accounts (soft deactivation via isActive)
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  staffCode      String?   @unique @map("staff_code")
+  passwordHash   String    @map("password_hash")
+  fullName       String    @map("full_name")
+  role           UserRole
+  isActive       Boolean   @default(true) @map("is_active")
+  externalAuthId String?   @unique @map("external_auth_id")
+  lastLoginAt    DateTime? @map("last_login_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  doctorProfile           Doctor?
+  nurseProfile            Nurse?
+  auditLogs               AuditLog[]
+  updatedSettings         SystemSetting[]
+  reportedIncidents       MedicalIncident[]      @relation("IncidentReporter")
+  recordedVitals          PatientVital[]
+  authoredClinicalNotes   ClinicalNote[]
+  administeredMeds        MedicineDispensation[] @relation("MedAdministeredBy")
+  verifiedMeds            MedicineDispensation[] @relation("MedVerifiedBy")
+  initiatedDispatches     AmbulanceDispatch[]
+  createdAlerts           EmergencyAlert[]       @relation("AlertCreator")
+  acknowledgedAlerts      EmergencyAlert[]       @relation("AlertAcknowledger")
+
+  @@index([role])
+  @@index([isActive])
+  @@map("users")
+}
+
+// Table 2: PostgreSQL session store matching connect-pg-simple's exact table.sql
+// Prisma owns DDL/migrations; connect-pg-simple owns runtime CRUD (createTableIfMissing: false).
+model UserSession {
+  sid    String   @id @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire], map: "IDX_session_expire")
+  @@map("user_sessions")
+}
+
+// Table 3: Immutable append-only audit & activity trail
+// Protected by a PostgreSQL trigger preventing UPDATE and DELETE.
+model AuditLog {
+  id          String   @id @default(cuid())
+  actorUserId String?  @map("actor_user_id")
+  action      String
+  entityType  String   @map("entity_type")
+  entityId    String   @map("entity_id")
+  summary     String
+  beforeJson  Json?    @map("before_json")
+  afterJson   Json?    @map("after_json")
+  ipAddress   String?  @map("ip_address")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  actor User? @relation(fields: [actorUserId], references: [id], onDelete: SetNull)
+
+  @@index([actorUserId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+// Table 4: Configurable event metadata, triage SLAs, and polling preferences
+model SystemSetting {
+  key             String   @id @db.VarChar(100)
+  category        String
+  valueJson       Json     @map("value_json")
+  updatedByUserId String?  @map("updated_by_user_id")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  updatedBy User? @relation(fields: [updatedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([category])
+  @@map("system_settings")
+}
+
+// ============================================================================
+// GROUP 2: FACILITIES & CLINICAL WORKFORCE (Tables 5–8)
+// ============================================================================
+
+// Table 5: Campus medical field posts & Central Depot (zero circular FK to doctors)
+model MedicalStation {
+  id           String        @id @default(cuid())
+  code         String        @unique
+  name         String
+  sector       String
+  locationDesc String        @map("location_desc")
+  stationType  StationType   @default(FIELD_POST) @map("station_type")
+  capacity     Int
+  status       StationStatus @default(OPERATIONAL)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  beds             StationBed[]
+  doctors          Doctor[]
+  nurses           Nurse[]
+  incidents        MedicalIncident[]
+  medicineBatches  MedicineBatch[]
+  equipment        MedicalEquipment[]
+  stagedAmbulances Ambulance[]
+
+  @@index([stationType])
+  @@index([status])
+  @@map("medical_stations")
+}
+
+// Table 6: Individual triage beds/cots per station (no circular FK to incidents)
+model StationBed {
+  id        String    @id @default(cuid())
+  stationId String    @map("station_id")
+  bedCode   String    @map("bed_code")
+  status    BedStatus @default(AVAILABLE)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  station   MedicalStation    @relation(fields: [stationId], references: [id], onDelete: Restrict)
+  incidents MedicalIncident[]
+
+  @@unique([stationId, bedCode])
+  @@index([stationId, status])
+  @@map("station_beds")
+}
+
+// Table 7: Physician roster (one-way FK to MedicalStation; partial unique index enforces 1 lead/station)
+model Doctor {
+  id             String           @id @default(cuid())
+  userId         String?          @unique @map("user_id")
+  stationId      String?          @map("station_id")
+  bmdcNumber     String           @unique @map("bmdc_number")
+  fullName       String           @map("full_name")
+  specialization String
+  isStationLead  Boolean          @default(false) @map("is_station_lead")
+  radioChannel   String?          @map("radio_channel")
+  phoneExt       String?          @map("phone_ext")
+  dutyStatus     DoctorDutyStatus @default(ON_DUTY) @map("duty_status")
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+
+  user          User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  station       MedicalStation?   @relation(fields: [stationId], references: [id], onDelete: SetNull)
+  leadIncidents MedicalIncident[]
+
+  @@index([stationId])
+  @@index([dutyStatus])
+  @@map("doctors")
+}
+
+// Table 8: Nurse roster
+model Nurse {
+  id               String          @id @default(cuid())
+  userId           String?         @unique @map("user_id")
+  stationId        String?         @map("station_id")
+  bnmcNumber       String          @unique @map("bnmc_number")
+  fullName         String          @map("full_name")
+  specialty        String
+  vhfCallsign      String?         @unique @map("vhf_callsign")
+  isRapidResponder Boolean         @default(false) @map("is_rapid_responder")
+  dutyStatus       NurseDutyStatus @default(ON_DUTY) @map("duty_status")
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+
+  user          User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  station       MedicalStation?   @relation(fields: [stationId], references: [id], onDelete: SetNull)
+  leadIncidents MedicalIncident[]
+
+  @@index([stationId])
+  @@index([dutyStatus])
+  @@map("nurses")
+}
+
+// ============================================================================
+// GROUP 3: PATIENTS, INCIDENTS & CLINICAL CARE (Tables 9–12)
+// ============================================================================
+
+// Table 9: Patient master record (PHI — strictly protected from Volunteer & Dispatcher roles)
+model Patient {
+  id                    String       @id @default(cuid())
+  recordCode            String       @unique @map("record_code")
+  fullName              String       @map("full_name")
+  age                   Int
+  sex                   PatientSex
+  bloodGroup            String?      @map("blood_group")
+  attendeeRole          AttendeeRole @map("attendee_role")
+  institutionalId       String?      @map("institutional_id")
+  emergencyContactName  String?      @map("emergency_contact_name")
+  emergencyContactPhone String?      @map("emergency_contact_phone")
+  allergiesNotes        String?      @map("allergies_notes")
+  medicalHistoryNotes   String?      @map("medical_history_notes")
+  createdAt             DateTime     @default(now()) @map("created_at")
+  updatedAt             DateTime     @updatedAt @map("updated_at")
+
+  incidents MedicalIncident[]
+
+  @@index([institutionalId])
+  @@index([fullName])
+  @@map("patients")
+}
+
+// Table 10: Core medical incident & triage encounter
+// patientId is nullable when first reported by a Volunteer until clinical triage links a Patient.
+// Custom SQL partial unique index guarantees at most 1 active (non-DISCHARGED) incident per bedId.
+model MedicalIncident {
+  id                     String           @id @default(cuid())
+  incidentCode           String           @unique @map("incident_code")
+  patientId              String?          @map("patient_id")
+  stationId              String?          @map("station_id")
+  bedId                  String?          @map("bed_id")
+  leadDoctorId           String?          @map("lead_doctor_id")
+  leadNurseId            String?          @map("lead_nurse_id")
+  reportedByUserId       String?          @map("reported_by_user_id")
+  triagePriority         TriagePriority   @default(UNTRIAGED) @map("triage_priority")
+  status                 IncidentStatus   @default(REPORTED)
+  category               IncidentCategory @default(OTHER)
+  chiefComplaint         String           @map("chief_complaint")
+  hpiNotes               String?          @map("hpi_notes")
+  gcsScore               Int?             @map("gcs_score")
+  locationText           String           @map("location_text")
+  dischargeChecklistJson Json?            @map("discharge_checklist_json")
+  admittedAt             DateTime         @default(now()) @map("admitted_at")
+  dischargedAt           DateTime?        @map("discharged_at")
+  createdAt              DateTime         @default(now()) @map("created_at")
+  updatedAt              DateTime         @updatedAt @map("updated_at")
+
+  patient    Patient?        @relation(fields: [patientId], references: [id], onDelete: Restrict)
+  station    MedicalStation? @relation(fields: [stationId], references: [id], onDelete: SetNull)
+  bed        StationBed?     @relation(fields: [bedId], references: [id], onDelete: SetNull)
+  leadDoctor Doctor?         @relation(fields: [leadDoctorId], references: [id], onDelete: SetNull)
+  leadNurse  Nurse?          @relation(fields: [leadNurseId], references: [id], onDelete: SetNull)
+  reportedBy User?           @relation("IncidentReporter", fields: [reportedByUserId], references: [id], onDelete: SetNull)
+
+  vitals        PatientVital[]
+  clinicalNotes ClinicalNote[]
+  dispensations MedicineDispensation[]
+  dispatches    AmbulanceDispatch[]
+  alerts        EmergencyAlert[]
+
+  @@index([patientId])
+  @@index([stationId])
+  @@index([bedId])
+  @@index([status, triagePriority])
+  @@index([reportedByUserId])
+  @@index([admittedAt])
+  @@map("medical_incidents")
+}
+
+// Table 11: Time-series patient vital signs logged per incident
+model PatientVital {
+  id               String   @id @default(cuid())
+  incidentId       String   @map("incident_id")
+  recordedByUserId String?  @map("recorded_by_user_id")
+  heartRate        Int?     @map("heart_rate")
+  bpSystolic       Int?     @map("bp_systolic")
+  bpDiastolic      Int?     @map("bp_diastolic")
+  spo2             Int?
+  tempC            Decimal? @map("temp_c") @db.Decimal(4, 1)
+  respRate         Int?     @map("resp_rate")
+  glucoseMgdl      Int?     @map("glucose_mgdl")
+  recordedAt       DateTime @default(now()) @map("recorded_at")
+
+  incident   MedicalIncident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  recordedBy User?           @relation(fields: [recordedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([incidentId, recordedAt])
+  @@map("patient_vitals")
+}
+
+// Table 12: Chronological EHR milestones & manual diagnostic/nursing notes
+model ClinicalNote {
+  id            String           @id @default(cuid())
+  incidentId    String           @map("incident_id")
+  authorUserId  String?          @map("author_user_id")
+  milestoneType ClinicalNoteType @map("milestone_type")
+  title         String
+  notes         String
+  createdAt     DateTime         @default(now()) @map("created_at")
+
+  incident MedicalIncident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  author   User?           @relation(fields: [authorUserId], references: [id], onDelete: SetNull)
+
+  @@index([incidentId, createdAt])
+  @@map("clinical_notes")
+}
+
+// ============================================================================
+// GROUP 4: PHARMACY, EQUIPMENT & AMBULANCE FLEET (Tables 13–18)
+// ============================================================================
+
+// Table 13: Pharmaceutical formulary catalog
+model Medicine {
+  id                 String   @id @default(cuid())
+  skuCode            String   @unique @map("sku_code")
+  name               String
+  genericName        String   @map("generic_name")
+  category           String
+  storageRequirement String   @map("storage_requirement")
+  isControlled       Boolean  @default(false) @map("is_controlled")
+  unitLabel          String   @map("unit_label")
+  minParLevel        Int      @map("min_par_level")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  batches MedicineBatch[]
+
+  @@index([category])
+  @@map("medicines")
+}
+
+// Table 14: Stock batches stored at a MedicalStation (Field Post or Central Depot)
+// Custom SQL CHECK constraints enforce quantity >= 0 and max_quantity > 0.
+model MedicineBatch {
+  id          String   @id @default(cuid())
+  medicineId  String   @map("medicine_id")
+  stationId   String   @map("station_id")
+  batchNumber String   @map("batch_number")
+  quantity    Int
+  maxQuantity Int      @map("max_quantity")
+  expiryDate  DateTime @map("expiry_date") @db.Date
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  medicine      Medicine               @relation(fields: [medicineId], references: [id], onDelete: Restrict)
+  station       MedicalStation         @relation(fields: [stationId], references: [id], onDelete: Restrict)
+  dispensations MedicineDispensation[]
+
+  @@unique([medicineId, stationId, batchNumber])
+  @@index([stationId])
+  @@index([expiryDate])
+  @@map("medicine_batches")
+}
+
+// Table 15: Transactional medicine dispensation records
+// Custom SQL CHECK constraints enforce quantity_dispensed > 0 and verified_by_user_id <> administered_by_user_id.
+model MedicineDispensation {
+  id                   String   @id @default(cuid())
+  incidentId           String   @map("incident_id")
+  batchId              String   @map("batch_id")
+  quantityDispensed    Int      @map("quantity_dispensed")
+  doseRoute            String   @map("dose_route")
+  administeredByUserId String?  @map("administered_by_user_id")
+  verifiedByUserId     String?  @map("verified_by_user_id")
+  dispensedAt          DateTime @default(now()) @map("dispensed_at")
+
+  incident       MedicalIncident @relation(fields: [incidentId], references: [id], onDelete: Restrict)
+  batch          MedicineBatch   @relation(fields: [batchId], references: [id], onDelete: Restrict)
+  administeredBy User?           @relation("MedAdministeredBy", fields: [administeredByUserId], references: [id], onDelete: SetNull)
+  verifiedBy     User?           @relation("MedVerifiedBy", fields: [verifiedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([incidentId])
+  @@index([batchId])
+  @@index([dispensedAt])
+  @@map("medicine_dispensations")
+}
+
+// Table 16: Biomedical equipment & hardware registry
+model MedicalEquipment {
+  id              String            @id @default(cuid())
+  assetCode       String            @unique @map("asset_code")
+  name            String
+  model           String
+  serialNumber    String            @unique @map("serial_number")
+  category        EquipmentCategory
+  stationId       String?           @map("station_id")
+  status          EquipmentStatus   @default(OPERATIONAL)
+  batteryPct      Int?              @map("battery_pct")
+  lastInspectedAt DateTime?         @map("last_inspected_at")
+  nextAuditDue    DateTime?         @map("next_audit_due")
+  notes           String?
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+
+  station MedicalStation? @relation(fields: [stationId], references: [id], onDelete: SetNull)
+
+  @@index([stationId])
+  @@index([status])
+  @@index([category])
+  @@map("medical_equipment")
+}
+
+// Table 17: Ambulance fleet units
+model Ambulance {
+  id               String          @id @default(cuid())
+  callsign         String          @unique
+  plateNumber      String          @unique @map("plate_number")
+  tier             AmbulanceTier
+  driverName       String          @map("driver_name")
+  paramedicLead    String          @map("paramedic_lead")
+  stationId        String?         @map("station_id")
+  status           AmbulanceStatus @default(STANDBY)
+  fuelPct          Int?            @map("fuel_pct")
+  equipmentSummary String?         @map("equipment_summary")
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+
+  station    MedicalStation?     @relation(fields: [stationId], references: [id], onDelete: SetNull)
+  dispatches AmbulanceDispatch[]
+
+  @@index([status])
+  @@index([stationId])
+  @@map("ambulances")
+}
+
+// Table 18: Ambulance transfer & dispatch missions
+model AmbulanceDispatch {
+  id                  String           @id @default(cuid())
+  ambulanceId         String           @map("ambulance_id")
+  incidentId          String?          @map("incident_id")
+  dispatchedByUserId  String?          @map("dispatched_by_user_id")
+  destinationHospital String           @map("destination_hospital")
+  priority            DispatchPriority @default(URGENT)
+  etaMinutes          Int?             @map("eta_minutes")
+  status              DispatchStatus   @default(DISPATCHED)
+  notes               String?
+  dispatchedAt        DateTime         @default(now()) @map("dispatched_at")
+  completedAt         DateTime?        @map("completed_at")
+
+  ambulance    Ambulance        @relation(fields: [ambulanceId], references: [id], onDelete: Restrict)
+  incident     MedicalIncident? @relation(fields: [incidentId], references: [id], onDelete: SetNull)
+  dispatchedBy User?            @relation(fields: [dispatchedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([ambulanceId, status])
+  @@index([incidentId])
+  @@index([dispatchedAt])
+  @@map("ambulance_dispatches")
+}
+
+// ============================================================================
+// GROUP 5: EMERGENCY COMMAND ALERTS (Table 19)
+// ============================================================================
+
+// Table 19: Active emergency alerts & command broadcasts
+model EmergencyAlert {
+  id                   String        @id @default(cuid())
+  incidentId           String?       @map("incident_id")
+  createdByUserId      String?       @map("created_by_user_id")
+  acknowledgedByUserId String?       @map("acknowledged_by_user_id")
+  severity             AlertSeverity
+  title                String
+  locationText         String        @map("location_text")
+  description          String?
+  status               AlertStatus   @default(ACTIVE)
+  createdAt            DateTime      @default(now()) @map("created_at")
+  acknowledgedAt       DateTime?     @map("acknowledged_at")
+  resolvedAt           DateTime?     @map("resolved_at")
+
+  incident       MedicalIncident? @relation(fields: [incidentId], references: [id], onDelete: SetNull)
+  createdBy      User?            @relation("AlertCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  acknowledgedBy User?            @relation("AlertAcknowledger", fields: [acknowledgedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([status, severity])
+  @@index([incidentId])
+  @@index([createdAt])
+  @@map("emergency_alerts")
+}

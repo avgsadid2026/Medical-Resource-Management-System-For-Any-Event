@@ -1,0 +1,540 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  html[data-theme='light'] {
+    /* Semantic theme tokens (Light Mode — Crisp Healthcare SaaS) */
+    --color-surface: 248 250 252;              /* #F8FAFC Off-white / light grey canvas */
+    --color-surface-dim: 241 245 249;          /* #F1F5F9 */
+    --color-surface-bright: 255 255 255;       /* #FFFFFF */
+    --color-surface-container-lowest: 255 255 255; /* #FFFFFF Cards, Panels, Sidebar, Topbar */
+    --color-surface-container-low: 255 255 255;    /* #FFFFFF Inputs / White fields */
+    --color-surface-container: 241 245 249;        /* #F1F5F9 Table headers / Subtle header tint */
+    --color-surface-container-high: 226 232 240;   /* #E2E8F0 Hover surfaces */
+    --color-surface-container-highest: 203 213 225;/* #CBD5E1 */
+    --color-surface-variant: 248 250 252;      /* #F8FAFC */
+    --color-surface-tint: 27 42 74;            /* #1B2A4A */
+    --color-on-surface: 15 23 42;              /* #0F172A Dark charcoal / black primary text */
+    --color-on-surface-variant: 71 85 105;     /* #475569 Slate / grey secondary text */
+    --color-inverse-surface: 30 41 59;         /* #1E293B */
+    --color-inverse-on-surface: 248 250 252;   /* #F8FAFC */
+    --color-outline: 100 116 139;              /* #64748B Slate / grey muted text */
+    --color-outline-variant: 226 232 240;      /* #E2E8F0 Light grey borders */
+
+    --color-primary: 27 42 74;                 /* #1B2A4A Deep Navy */
+    --color-primary-hover: 15 23 42;           /* #0F172A */
+    --color-on-primary: 255 255 255;           /* #FFFFFF */
+    --color-primary-container: 238 242 255;    /* #EEF2FF Soft Blue */
+    --color-on-primary-container: 27 42 74;    /* #1B2A4A */
+    --color-inverse-primary: 147 197 253;      /* #93C5FD */
+    --color-primary-fixed: 238 242 255;
+    --color-primary-fixed-dim: 224 231 255;
+    --color-on-primary-fixed: 27 42 74;
+    --color-on-primary-fixed-variant: 42 63 109;
+
+    --color-secondary: 71 85 105;              /* #475569 */
+    --color-on-secondary: 255 255 255;
+    --color-secondary-container: 241 245 249;
+    --color-on-secondary-container: 51 65 85;
+    --color-secondary-fixed: 241 245 249;
+    --color-secondary-fixed-dim: 226 232 240;
+    --color-on-secondary-fixed: 15 23 42;
+    --color-on-secondary-fixed-variant: 51 65 85;
+
+    --color-tertiary: 37 99 235;               /* #2563EB */
+    --color-on-tertiary: 255 255 255;
+    --color-tertiary-container: 219 234 254;
+    --color-on-tertiary-container: 30 64 175;
+    --color-tertiary-fixed: 219 234 254;
+    --color-tertiary-fixed-dim: 191 219 254;
+    --color-on-tertiary-fixed: 30 64 175;
+    --color-on-tertiary-fixed-variant: 29 78 216;
+
+    --color-error: 220 38 38;                  /* #DC2626 */
+    --color-on-error: 255 255 255;
+    --color-error-container: 254 226 226;
+    --color-on-error-container: 153 27 27;
+
+    --color-success: 16 185 129;               /* #10B981 */
+    --color-on-success: 255 255 255;
+    --color-success-container: 220 252 231;
+    --color-on-success-container: 22 101 52;
+
+    --color-warning: 217 119 6;                /* #D97706 */
+    --color-on-warning: 255 255 255;
+    --color-warning-container: 254 243 199;
+    --color-on-warning-container: 146 64 14;
+
+    --color-background: 248 250 252;
+    --color-on-background: 15 23 42;
+
+    /* shadcn/ui semantic bridges */
+    --background: 216 33% 97%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 214 32% 91%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 46% 20%;
+  }
+
+  html.dark,
+  :root.dark,
+  .dark,
+  html[data-theme='dark'],
+  body.dark {
+    /* Semantic theme tokens (Dark Mode — Specifications) */
+    --color-surface: 11 15 25;                 /* #0B0F19 Deep Charcoal/Navy Canvas */
+    --color-surface-dim: 8 11 19;              /* #080B13 */
+    --color-surface-bright: 24 34 52;          /* #182234 */
+    --color-surface-container-lowest: 24 34 52; /* #182234 Cards & Panels */
+    --color-surface-container-low: 24 34 52;   /* #182234 Input backgrounds */
+    --color-surface-container: 30 41 59;       /* #1E293B Table headers (differentiated dark surface) */
+    --color-surface-container-high: 39 55 84;  /* #273754 Elevated / Hover states */
+    --color-surface-container-highest: 51 65 85; /* #334155 Active borders */
+    --color-surface-variant: 24 34 52;         /* #182234 */
+    --color-surface-tint: 59 130 246;          /* #3B82F6 */
+    --color-on-surface: 248 250 252;           /* #F8FAFC White / near-white primary text */
+    --color-on-surface-variant: 203 213 225;   /* #CBD5E1 Soft grey secondary text */
+    --color-inverse-surface: 241 245 249;      /* #F1F5F9 */
+    --color-inverse-on-surface: 15 23 42;      /* #0F172A */
+    --color-outline: 148 163 184;              /* #94A3B8 Muted grey text & placeholder */
+    --color-outline-variant: 51 65 85;         /* #334155 Subtle dark grey borders */
+
+    --color-primary: 59 130 246;               /* #3B82F6 Vibrant Clinical Blue */
+    --color-primary-hover: 96 165 250;          /* #60A5FA */
+    --color-on-primary: 255 255 255;           /* #FFFFFF */
+    --color-primary-container: 30 58 95;       /* #1E3A5F */
+    --color-on-primary-container: 191 219 254; /* #BFDBFE High-contrast blue accent */
+    --color-inverse-primary: 27 42 74;         /* #1B2A4A */
+    --color-primary-fixed: 30 46 74;
+    --color-primary-fixed-dim: 24 36 58;
+    --color-on-primary-fixed: 191 219 254;
+    --color-on-primary-fixed-variant: 147 197 253;
+
+    --color-secondary: 203 213 225;            /* #CBD5E1 Soft grey */
+    --color-on-secondary: 15 23 42;
+    --color-secondary-container: 30 41 59;
+    --color-on-secondary-container: 226 232 240;
+    --color-secondary-fixed: 30 41 59;
+    --color-secondary-fixed-dim: 24 34 52;
+    --color-on-secondary-fixed: 248 250 252;
+    --color-on-secondary-fixed-variant: 203 213 225;
+
+    --color-tertiary: 96 165 250;              /* #60A5FA */
+    --color-on-tertiary: 15 23 42;
+    --color-tertiary-container: 30 58 95;
+    --color-on-tertiary-container: 191 219 254;
+    --color-tertiary-fixed: 30 58 95;
+    --color-tertiary-fixed-dim: 23 44 73;
+    --color-on-tertiary-fixed: 191 219 254;
+    --color-on-tertiary-fixed-variant: 147 197 253;
+
+    --color-error: 248 113 113;                /* #F87171 Bright Error */
+    --color-on-error: 255 255 255;
+    --color-error-container: 69 10 10;         /* #450A0A */
+    --color-on-error-container: 254 202 202;   /* #FECACA */
+
+    --color-success: 52 211 153;               /* #34D399 Bright Emerald */
+    --color-on-success: 255 255 255;
+    --color-success-container: 6 78 59;        /* #064E3B */
+    --color-on-success-container: 167 243 208; /* #A7F3D0 */
+
+    --color-warning: 251 191 36;               /* #FBBF24 Bright Amber */
+    --color-on-warning: 255 255 255;
+    --color-warning-container: 120 53 15;      /* #78350F */
+    --color-on-warning-container: 253 230 138; /* #FDE68A */
+
+    --color-background: 11 15 25;
+    --color-on-background: 248 250 252;
+
+    /* shadcn/ui semantic bridges for dark mode */
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 213 97% 65%;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+    background-color: rgb(var(--color-surface));
+    color: rgb(var(--color-on-surface));
+  }
+
+  /* GPU Hardware-Accelerated View Transition for 120fps Theme Switching */
+  html.emrms-vt-active *,
+  html.emrms-vt-active *::before,
+  html.emrms-vt-active *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 280ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mix-blend-mode: normal;
+    animation-duration: 280ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-old(root) {
+    animation-name: emrms-vt-fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: emrms-vt-fade-in;
+  }
+
+  @keyframes emrms-vt-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes emrms-vt-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Fallback CSS transition when View Transitions API is unavailable */
+  html.emrms-theme-switching,
+  html.emrms-theme-switching body,
+  html.emrms-theme-switching .bg-surface-container-lowest,
+  html.emrms-theme-switching .bg-surface-container-low,
+  html.emrms-theme-switching .bg-surface-container-high,
+  html.emrms-theme-switching .emrms-glass-sidebar,
+  html.emrms-theme-switching .emrms-glass-topbar,
+  html.emrms-theme-switching .emrms-glass-subpanel,
+  html.emrms-theme-switching .emrms-glass-footer {
+    transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 220ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  /* Universal Glassmorphic styling for inputs, selects, textareas, and tables */
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    background-color: rgba(255, 255, 255, 0.65);
+    color: rgb(var(--color-on-surface));
+    border-color: rgba(226, 232, 240, 0.9);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.85),
+      0 1px 2px rgba(15, 23, 42, 0.03);
+    transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .dark input:not([type='checkbox']):not([type='radio']),
+  .dark select,
+  .dark textarea {
+    background-color: rgba(15, 23, 42, 0.62);
+    border-color: rgba(148, 163, 184, 0.22);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.25);
+  }
+
+  input:not([type='checkbox']):not([type='radio']):focus,
+  select:focus,
+  textarea:focus {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(37, 99, 235, 0.55);
+    box-shadow:
+      0 0 0 3px rgba(37, 99, 235, 0.14),
+      inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  }
+
+  .dark input:not([type='checkbox']):not([type='radio']):focus,
+  .dark select:focus,
+  .dark textarea:focus {
+    background-color: rgba(24, 36, 62, 0.82);
+    border-color: rgba(96, 165, 250, 0.6);
+    box-shadow:
+      0 0 0 3px rgba(59, 130, 246, 0.22),
+      inset 0 1px 1px rgba(255, 255, 255, 0.14);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgb(var(--color-outline));
+  }
+
+  /* Native select option theming */
+  select option {
+    background-color: rgb(var(--color-surface-container-lowest));
+    color: rgb(var(--color-on-surface));
+  }
+
+  table {
+    color: rgb(var(--color-on-surface));
+  }
+
+  th {
+    color: rgb(var(--color-on-surface-variant));
+  }
+
+  thead tr {
+    background-color: rgba(241, 245, 249, 0.65) !important;
+  }
+
+  .dark thead tr {
+    background-color: rgba(15, 23, 42, 0.62) !important;
+  }
+
+  tbody tr {
+    transition: background-color 150ms ease;
+  }
+
+  tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.55) !important;
+  }
+
+  .dark tbody tr:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+  }
+
+  /* Tabular numerals for timestamps, metrics, and clinical tables */
+  .tabular-metrics,
+  table td,
+  table th {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ============================================================================
+   SYSTEM-WIDE GLASSMORPHISM SURFACE ENGINE
+   Uses interpolatable background-color + shared specular highlight so Light <->
+   Dark theme transitions animate smoothly from frame 0 at 60fps without snapping.
+   ============================================================================ */
+.bg-surface-container-lowest {
+  background-color: rgba(255, 255, 255, 0.68) !important;
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border-color: rgba(255, 255, 255, 0.84) !important;
+  box-shadow:
+    0 10px 30px -4px rgba(15, 23, 42, 0.06),
+    0 2px 6px -1px rgba(37, 99, 235, 0.03),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.dark .bg-surface-container-lowest {
+  background-color: rgba(17, 26, 46, 0.66) !important;
+  border-color: rgba(148, 163, 184, 0.2) !important;
+  box-shadow:
+    0 14px 34px -6px rgba(0, 0, 0, 0.5),
+    0 2px 8px -1px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.bg-surface-container-low,
+.bg-surface-container-low\/60,
+.bg-surface-container-low\/70,
+.bg-surface-container-low\/80 {
+  background-color: rgba(248, 250, 252, 0.68) !important;
+  border-color: rgba(226, 232, 240, 0.85);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.dark .bg-surface-container-low,
+.dark .bg-surface-container-low\/60,
+.dark .bg-surface-container-low\/70,
+.dark .bg-surface-container-low\/80 {
+  background-color: rgba(15, 23, 42, 0.58) !important;
+  border-color: rgba(148, 163, 184, 0.18);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.07);
+}
+
+.bg-surface-container-high {
+  background-color: rgba(226, 232, 240, 0.65) !important;
+}
+
+.dark .bg-surface-container-high {
+  background-color: rgba(39, 55, 84, 0.62) !important;
+}
+
+/* Dedicated Glass Shell Surfaces (Sidebar, Topbar, Pills, Footer) */
+.emrms-glass-sidebar {
+  background-color: rgba(255, 255, 255, 0.76);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(20px) saturate(175%);
+  -webkit-backdrop-filter: blur(20px) saturate(175%);
+  border-right: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 4px 0 28px -4px rgba(15, 23, 42, 0.05);
+}
+
+.dark .emrms-glass-sidebar {
+  background-color: rgba(11, 18, 33, 0.82);
+  border-right: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 4px 0 32px -4px rgba(0, 0, 0, 0.52);
+}
+
+.emrms-glass-topbar {
+  position: sticky;
+}
+
+.emrms-glass-topbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(175%);
+  -webkit-backdrop-filter: blur(20px) saturate(175%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+}
+
+.dark .emrms-glass-topbar::before {
+  background-color: rgba(11, 18, 33, 0.78);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.45);
+}
+
+/* Deep Frosted Glass Popover (Notifications & Floating Menus) */
+.emrms-glass-popover {
+  background-color: rgba(255, 255, 255, 0.84) !important;
+  background-image: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.92) !important;
+  box-shadow:
+    0 22px 48px -8px rgba(15, 23, 42, 0.16),
+    0 4px 14px -2px rgba(15, 23, 42, 0.07),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+}
+
+.dark .emrms-glass-popover {
+  background-color: rgba(13, 21, 38, 0.84) !important;
+  background-image: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  box-shadow:
+    0 24px 56px -8px rgba(0, 0, 0, 0.72),
+    0 6px 18px -2px rgba(0, 0, 0, 0.48),
+    inset 0 1px 1px rgba(255, 255, 255, 0.16) !important;
+}
+
+.emrms-glass-subpanel {
+  background-color: rgba(241, 245, 249, 0.78);
+  border: 1px solid rgba(226, 232, 240, 0.92);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85);
+}
+
+.dark .emrms-glass-subpanel {
+  background-color: rgba(24, 34, 54, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.emrms-glass-footer {
+  background-color: rgba(248, 250, 252, 0.82);
+  border-top: 1px solid rgba(226, 232, 240, 0.88);
+}
+
+.dark .emrms-glass-footer {
+  background-color: rgba(8, 13, 24, 0.86);
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+/* Visible, subtle horizontal scrollbars on wide data tables */
+.emrms-table-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.emrms-table-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.emrms-table-scroll::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+.emrms-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Global scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Scrollbars in Dark Mode */
+.dark .emrms-table-scroll::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+.dark .emrms-table-scroll::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

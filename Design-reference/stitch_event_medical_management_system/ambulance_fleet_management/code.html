@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed-dim":"#c7c6c6","on-secondary-container":"#646464","tertiary-fixed-dim":"#ffb4ab","surface-container-highest":"#e2e2e2","outline":"#76777d","primary-container":"#131b2e","tertiary-fixed":"#ffdad6","on-error-container":"#93000a","tertiary-container":"#410002","surface-dim":"#dadada","surface-container-low":"#f3f3f3","on-secondary-fixed":"#1b1c1c","on-tertiary-container":"#f63a35","error-container":"#ffdad6","surface-bright":"#f9f9f9","primary":"#000000","surface-container-high":"#e8e8e8","secondary-fixed":"#e3e2e2","on-primary-fixed-variant":"#3f465c","surface-container":"#eeeeee","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#93000b","surface":"#f9f9f9","primary-fixed":"#dae2fd","on-secondary-fixed-variant":"#464747","primary-fixed-dim":"#bec6e0","surface-container-lowest":"#ffffff","secondary-container":"#e3e2e2","error":"#ba1a1a","secondary":"#5e5e5e","inverse-surface":"#2f3131","on-primary-fixed":"#131b2e","tertiary":"#000000","on-error":"#ffffff","on-tertiary":"#ffffff","background":"#f9f9f9","on-surface":"#1a1c1c","on-surface-variant":"#45464d","on-secondary":"#ffffff","inverse-on-surface":"#f0f1f1","surface-variant":"#e2e2e2","on-background":"#1a1c1c","outline-variant":"#c6c6cd","surface-tint":"#565e74","on-tertiary-fixed":"#410002","on-primary-container":"#7c839b","on-primary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter":"1rem","margin-desktop":"2rem","margin":"1rem","space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter-desktop":"1.5rem","space-xl":"2rem"},"fontFamily":{"body-sm":["Geist"],"headline-xl":["Hanken Grotesk"],"label-sm":["Geist"],"metric-display":["Geist"],"headline-xl-mobile":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"body-lg":["Geist"],"body-md":["Geist"],"headline-md":["Hanken Grotesk"],"label-lg":["Geist"],"label-md":["Geist"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"metric-display":["32px",{"lineHeight":"36px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["18px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"500"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-outline-variant/30 z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="p-space-md border-b border-outline-variant/30 flex items-center gap-space-sm"><img alt="EMRMS Swiss Medical Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDHm2dagURJ6NIACFolD60UP1XvmdgYCEr574cSt5ZPR6ps8LuT7NVh64XxLF4z3_GLR_aZ_cp9H_fEgkbGCbSCZuJlQU5myE7hpJj6QZaaK5UJgi36cGBPXWeZ8HbeSAqrjpBSWMcjIsOJpKcMkW5iUdstqUYokKqfFvYsTJULUsKH-AEHe6MlC7Q9VzhGReOdPR69DU4QiqPgHHTrUbrp2Q9AiWt6mMRpl9OdTNAF"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface tracking-tight leading-none">EMRMS</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold mt-1">Command Center</span></div></div><div class="px-space-md py-space-xs"><div class="mt-2 px-space-sm py-1 bg-surface-container-low rounded-lg border border-outline-variant/20 flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-tight">EVENT CADENCE</span><span class="font-label-sm text-label-sm text-primary font-bold tracking-tight bg-secondary-fixed px-1.5 py-0.5 rounded">BAUST CSE Fest '25</span></div></div><nav class="flex flex-col px-space-sm py-space-xs gap-0.5" data-active-classes="bg-primary text-on-primary font-semibold"><div class="px-space-sm pt-3 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">CORE DISPATCH</div><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="main-dashboard" href="#"><span class="font-body-md text-body-md">Main Dashboard</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="emergency-alerts" href="#"><span class="font-body-md text-body-md">Emergency Alerts</span><span class="bg-error text-on-error font-label-sm text-label-sm px-1.5 py-0.5 rounded font-bold">2 Critical</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medical-incident-management" href="#"><span class="font-body-md text-body-md">Incident Management</span></a><div class="px-space-sm pt-4 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">CLINICAL &amp; PATIENTS</div><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="doctor-management" href="#"><span class="font-body-md text-body-md">Doctor Management</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="nurse-management" href="#"><span class="font-body-md text-body-md">Nurse Management</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="patient-records" href="#"><span class="font-body-md text-body-md">Patient Records</span></a><div class="px-space-sm pt-4 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">RESOURCES &amp; LOGISTICS</div><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medicine-inventory" href="#"><span class="font-body-md text-body-md">Medicine Inventory</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medical-equipment" href="#"><span class="font-body-md text-body-md">Medical Equipment</span></a><a aria-current="page" class="flex items-center px-space-sm py-2 rounded-lg transition-colors bg-primary text-on-primary font-semibold" data-path="ambulance-fleet" href="#"><span class="font-body-md text-body-md">Ambulance Fleet</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medical-stations" href="#"><span class="font-body-md text-body-md">Medical Stations</span></a><div class="px-space-sm pt-4 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">GOVERNANCE &amp; AUDIT</div><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports-and-analytics" href="#"><span class="font-body-md text-body-md">Reports &amp; Analytics</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="activity-and-audit-logs" href="#"><span class="font-body-md text-body-md">Activity &amp; Audit Logs</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="user-and-roles" href="#"><span class="font-body-md text-body-md">User &amp; Roles</span></a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="font-body-md text-body-md">Settings</span></a></nav></div><div class="p-space-md border-t border-outline-variant/30 bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Telemetry Synced</span><span class="ml-auto font-label-sm text-label-sm font-semibold text-on-surface bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">v2.4.1</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low border border-outline-variant/30 px-space-sm py-1.5 rounded-lg w-72 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-body-sm text-body-sm flex-1">Search triage, roster, stock...</span><kbd class="font-label-sm text-label-sm bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/30 text-on-surface font-semibold">⌘K</kbd></div><div class="h-4 w-px bg-outline-variant/40"></div><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-error"></span><span class="font-label-sm text-label-sm font-semibold text-on-surface uppercase tracking-tight">Campus Main Pavilion • Live</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low rounded border border-outline-variant/20"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-sm text-label-sm text-on-surface font-medium">Operational (35ms)</span></div><button class="flex items-center gap-1.5 px-3 py-1.5 bg-error text-on-error rounded font-label-sm text-label-sm font-bold uppercase tracking-wider shadow-sm hover:opacity-95 transition-opacity" type="button"><span class="material-symbols-outlined text-[16px]">campaign</span><span>SOS Broadcast</span></button><button class="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="h-5 w-px bg-outline-variant/40"></div><div class="flex items-center gap-space-sm pl-1"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Dr. Elena Vance</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none uppercase">Chief Medical Officer</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmyGKZwSh1Y54Sf76rXKM2VEVSrCKwpQWOutPPxSGZW9jeermi8vNNP24wgURAz8NSPYMJC9YY7YBw3xsPfEfv14nkLR8F3jCryjDEXldB0JwFkNdG9s3GkGZmTfb4Mv9kquZ6l9fDqnQynilf9ueHuUGh1wBR5hdUUD9a6md6s97u286elQay0V3PP2-aHK3qx9-8nuYtquVpDdiQF2I45jzF1OoGGQfIwwGXm2Li"/></div></div></header><main class="relative pt-16 min-h-screen bg-surface w-full px-space-lg"><div class="flex flex-col w-full pb-16">
+<!-- Top Command Context Bar -->
+<div class="flex flex-col gap-space-xs pt-space-md pb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Clinical Logistics</span>
+<span class="text-outline-variant text-[11px]">/</span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">BAUST CSE Fest '25</span>
+<span class="text-outline-variant text-[11px]">/</span>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Fleet &amp; Rapid Transit Operations</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md mt-1">
+<div class="flex flex-col max-w-3xl">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-none">
+          Ambulance Fleet &amp; Rapid Transit Command
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+          Real-time telemetry, GPS tracking, paramedic team assignments, patient transfer dispatch, and emergency corridor status for campus ambulances.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap shrink-0">
+<button class="h-9 px-3.5 bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-md text-label-md rounded shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[17px] text-outline">dashboard</span>
+<span>Fleet Status Overview</span>
+</button>
+<button class="h-9 px-3.5 bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-md text-label-md rounded shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[17px] text-outline">emergency_home</span>
+<span>Request External CMH Ambulance</span>
+</button>
+<button class="h-9 px-4 bg-primary text-on-primary hover:bg-on-primary-fixed-variant font-label-md text-label-md rounded shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_alert</span>
+<span>+ Register Emergency Dispatch</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI Metrics Grid (4 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Ambulance Fleet Readiness</span>
+<span class="material-symbols-outlined text-outline text-[18px]">local_shipping</span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface">5</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Total Units</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 3 Standby
+          </span>
+<span class="text-outline-variant font-label-sm">•</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-error font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span> 2 Enroute
+          </span>
+</div>
+</div>
+<div class="pt-2 bg-surface-container-low px-2 py-1 rounded">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">100% Mechanical Readiness • Mesh Radio Linked</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Critical Transit Calls</span>
+<span class="px-1.5 py-0.5 rounded font-label-sm text-label-sm font-bold bg-error text-on-error uppercase tracking-wider">1 Code Red Transit</span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-error">2</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Units En Route</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          1 to Saidpur CMH Emergency Dept, 1 Perimeter Patrol
+        </p>
+</div>
+<div class="pt-2 bg-surface-container-low px-2 py-1 rounded flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Escort Vehicle: Staged North Corridor</span>
+<span class="material-symbols-outlined text-[14px] text-error">fmd_good</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Avg Dispatch Sprint</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded">Target &lt; 2m</span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface">1m 15s</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Campus Exit</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden mt-2">
+<div class="bg-primary h-full rounded-full" style="width: 62%;"></div>
+</div>
+</div>
+<div class="pt-2 bg-surface-container-low px-2 py-1 rounded">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Corridor Clear Gate 1 • Staged Escort</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Life Support Integrity</span>
+<span class="material-symbols-outlined text-outline text-[18px]">ecg_heart</span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface">99.2%</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold uppercase">Telemetry Sync</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Zoll X Defibrillators &amp; O2 Cylinders Verified
+        </p>
+</div>
+<div class="pt-2 bg-surface-container-low px-2 py-1 rounded flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Next Equipment Self-Audit: 16:00</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+</div>
+<!-- Filter & Action Toolbar -->
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm mb-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs flex-1 max-w-xl">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-2 rounded flex-1">
+<span class="material-symbols-outlined text-[18px] text-outline">search</span>
+<input class="bg-transparent border-0 outline-none w-full font-body-sm text-body-sm text-on-surface placeholder:text-outline" id="fleetSearchInput" placeholder="Search vehicle call-sign, driver name, paramedic lead, registration..." type="text"/>
+<kbd class="font-label-sm text-label-sm bg-surface-container-highest px-1.5 py-0.5 rounded text-on-surface font-semibold">⌘K</kbd>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<!-- Sector Dropdown -->
+<div class="relative inline-block text-left">
+<select class="appearance-none bg-surface-container-low text-on-surface font-label-md text-label-md px-3 py-2 pr-7 rounded cursor-pointer outline-none hover:bg-surface-container">
+<option>All Sectors (Campus &amp; Regional)</option>
+<option>Station 01 • Main Auditorium</option>
+<option>Station 02 • Sports Arena</option>
+<option>Corridor Alpha • Saidpur Highway</option>
+</select>
+<span class="material-symbols-outlined text-[16px] text-outline absolute right-2 top-2.5 pointer-events-none">expand_more</span>
+</div>
+<!-- Operational State Dropdown -->
+<div class="relative inline-block text-left">
+<select class="appearance-none bg-surface-container-low text-on-surface font-label-md text-label-md px-3 py-2 pr-7 rounded cursor-pointer outline-none hover:bg-surface-container">
+<option>All States (Dispatched, Standby, Maintenance)</option>
+<option>Code Red Priority</option>
+<option>Standby Active</option>
+<option>External Mutual Aid</option>
+</select>
+<span class="material-symbols-outlined text-[16px] text-outline absolute right-2 top-2.5 pointer-events-none">expand_more</span>
+</div>
+<!-- View Switcher -->
+<div class="flex items-center bg-surface-container-low p-0.5 rounded">
+<button class="px-2.5 py-1.5 rounded font-label-sm text-label-sm font-semibold bg-primary text-on-primary flex items-center gap-1 shadow-xs" id="btnTableView" type="button">
+<span class="material-symbols-outlined text-[15px]">table_rows</span>
+<span class="hidden sm:inline">Table</span>
+</button>
+<button class="px-2.5 py-1.5 rounded font-label-sm text-label-sm font-semibold text-on-surface-variant hover:text-on-surface flex items-center gap-1" id="btnGridView" type="button">
+<span class="material-symbols-outlined text-[15px]">grid_view</span>
+<span class="hidden sm:inline">Fleet Grid</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Segment Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs mb-space-md">
+<button class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-primary text-on-primary shrink-0">
+      All Ambulances (5)
+    </button>
+<button class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container-lowest text-on-surface hover:bg-surface-container shrink-0">
+      En Route Transit (2)
+    </button>
+<button class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container-lowest text-on-surface hover:bg-surface-container shrink-0">
+      Standby Ready (3)
+    </button>
+<button class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container-lowest text-on-surface hover:bg-surface-container shrink-0">
+      CMH Heavy ALS (1)
+    </button>
+<span class="text-outline-variant font-label-sm mx-1">|</span>
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+      Auto-refreshing every 5s
+    </span>
+</div>
+<!-- Main 2-Column Command Workspace (65% / 35%) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md items-start">
+<!-- LEFT: Active Fleet Ledger Table (8 cols on XL = ~66.6%) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="px-space-md py-space-sm bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">minor_crash</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Active Fleet Dispatch Ledger</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold bg-surface-container px-2 py-0.5 rounded">
+          Sync Node: Rangpur-BAUST Base 1
+        </span>
+</div>
+<!-- Ledger Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/70 text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-space-md">Ambulance &amp; Callsign</th>
+<th class="py-2.5 px-space-sm">Type &amp; Equipment</th>
+<th class="py-2.5 px-space-sm">On-Board Crew</th>
+<th class="py-2.5 px-space-sm">Status &amp; Sector</th>
+<th class="py-2.5 px-space-sm">Patient / Mission</th>
+<th class="py-2.5 px-space-sm">Telemetry</th>
+<th class="py-2.5 px-space-md text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-on-surface font-body-sm text-body-sm">
+<!-- Row 1: Code Red Transit -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-lowest group">
+<td class="py-3 px-space-md align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Unit 01</span>
+<span class="font-label-sm text-label-sm bg-error text-on-error px-1 py-0.2 rounded font-bold">ALS ICU</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold tracking-tight mt-0.5">MED-AMB-01</span>
+<span class="font-label-sm text-label-sm text-outline">DHAKA-METRO-CH-4491</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Advanced Life Support</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm leading-tight mt-0.5">Mindray Defib + Resmed Ventilator</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">O2 Reserve: 94% full</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">D: M. Ali</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Lead: S. Alam, EMT-P</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5">Dual Paramedic Certified</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-1.5 py-0.5 rounded font-bold bg-error text-on-error uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    Code Red Transfer
+                  </span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Saidpur CMH Enroute</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-error">PT-4088</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Cardiac Arrhythmia</span>
+<div class="mt-1 flex items-center gap-1 bg-surface-container px-1.5 py-0.5 rounded w-fit">
+<span class="material-symbols-outlined text-[13px] text-error">timer</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">ETA: 6 mins</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex flex-col gap-0.5">
+<span class="text-on-surface font-medium">Fuel: 82%</span>
+<span class="font-mono text-[11px] text-outline">25.772N, 88.891E</span>
+<span class="font-semibold text-on-surface">Spd: 48 km/h</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right">
+<div class="flex flex-col items-end gap-1.5">
+<button class="px-2 py-1 bg-error text-on-error rounded font-label-sm text-label-sm font-bold uppercase tracking-wider flex items-center gap-1 hover:opacity-90 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[13px]">cell_tower</span>
+<span>Direct Radio</span>
+</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-label-sm text-label-sm font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[13px]">monitor_heart</span>
+<span>Telemetry</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: BLS Standby -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Unit 02</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-1 py-0.2 rounded font-semibold">BLS Transit</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold tracking-tight mt-0.5">MED-AMB-02</span>
+<span class="font-label-sm text-label-sm text-outline">RANGPUR-GA-1102</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Basic Life Support</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm leading-tight mt-0.5">Trauma First Response Kit</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Stretcher + Splints Validated</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">D: K. Rahman</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">EMT: F. Hossain</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Shift: Day (08:00-20:00)</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-1.5 py-0.5 rounded font-bold bg-surface-container text-on-surface uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Standby Ready
+                  </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Station 01 • Auditorium</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Available</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Immediate campus dispatch</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Sprint Readiness: 45s</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex flex-col gap-0.5">
+<span class="text-on-surface font-medium">Fuel: 95%</span>
+<span class="text-outline">North Gate Bay</span>
+<span class="text-on-surface">Engine Idle</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right">
+<div class="flex flex-col items-end gap-1.5">
+<button class="px-2 py-1 bg-primary text-on-primary rounded font-label-sm text-label-sm font-bold uppercase tracking-wider flex items-center gap-1 hover:bg-on-primary-fixed-variant" type="button">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>Dispatch Unit</span>
+</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-label-sm text-label-sm font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[13px]">mic</span>
+<span>Radio Check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: 4x4 Field Evac -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Unit 03</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-1 py-0.2 rounded font-semibold">Field 4x4</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold tracking-tight mt-0.5">MED-AMB-03</span>
+<span class="font-label-sm text-label-sm text-outline">DHAKA-METRO-HA-8821</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">All-Terrain 4WD Evac</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm leading-tight mt-0.5">Sports Grounds &amp; Off-road Kit</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Heat stroke immersion tent</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">D: T. Islam</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">EMT: R. Parvez</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Specialty: Sports Trauma</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-1.5 py-0.5 rounded font-bold bg-surface-container text-on-surface uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Standby Ready
+                  </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Station 02 • Sports Ground</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Designated Evac</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Outdoor heat exhaustion evac unit</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Pitch Access: Direct Gate B</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex flex-col gap-0.5">
+<span class="text-on-surface font-medium">Fuel: 88%</span>
+<span class="text-outline">Battery: 100%</span>
+<span class="text-on-surface">Cabin AC Active</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right">
+<div class="flex flex-col items-end gap-1.5">
+<button class="px-2 py-1 bg-primary text-on-primary rounded font-label-sm text-label-sm font-bold uppercase tracking-wider flex items-center gap-1 hover:bg-on-primary-fixed-variant" type="button">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>Dispatch Unit</span>
+</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-label-sm text-label-sm font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[13px]">mic</span>
+<span>Radio Check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Reserve BLS -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Unit 04</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-1 py-0.2 rounded font-semibold">Reserve BLS</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold tracking-tight mt-0.5">MED-AMB-04</span>
+<span class="font-label-sm text-label-sm text-outline">RANGPUR-CHA-5531</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Basic Transport</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm leading-tight mt-0.5">Central Clinic Reserve</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">AED + First Line Meds</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">D: N. Haque (On-Call)</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Paramedic: Reserve Pool</span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Activation Lag: 3 mins</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-1.5 py-0.5 rounded font-semibold bg-surface-container text-on-surface-variant uppercase">
+                    Reserve Standby
+                  </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Central Depot Bay 2</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Secondary Wave</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Mass casualty reserve buffer</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Standing protocol activated</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex flex-col gap-0.5">
+<span class="text-on-surface font-medium">Fuel: 91%</span>
+<span class="text-on-surface font-medium">Mech Check: Passed</span>
+<span class="text-outline">Tires: 36 PSI</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right">
+<div class="flex flex-col items-end gap-1.5">
+<button class="px-2 py-1 bg-surface-container hover:bg-surface-container-high text-on-surface rounded font-label-sm text-label-sm font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[13px]">upgrade</span>
+<span>Deploy Reserve</span>
+</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-label-sm text-label-sm font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[13px]">assignment_turned_in</span>
+<span>Log Inspect</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: CMH Mutual Aid -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Saidpur CMH Mutual Aid</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold tracking-tight mt-0.5">CMH-ALS-01</span>
+<span class="font-label-sm text-label-sm text-outline">MIL-MED-098</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Heavy Critical Care ICU</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm leading-tight mt-0.5">Military Hospital Escort Unit</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Full Surgical Resuscitation</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Military Physician &amp; Escort</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Capt. Dr. Anis, AMC</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5">Emergency Trauma Specialist</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-1.5 py-0.5 rounded font-bold bg-primary text-on-primary uppercase">
+                    External Mutual Aid
+                  </span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Campus Main Gate Staged</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">L4 Escalation Post</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Level-4 surgical trauma escalations</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">Corridor Priority: Tier 1</span>
+</div>
+</td>
+<td class="py-3 px-space-sm align-top font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex flex-col gap-0.5">
+<span class="text-on-surface font-semibold">Mil-EM-Channel 04</span>
+<span class="text-outline">Comms Encrypted</span>
+<span class="text-on-surface">Aux Generator: ON</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right">
+<div class="flex flex-col items-end gap-1.5">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-label-sm text-label-sm font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[13px]">phone_in_talk</span>
+<span>Hail Command</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Bottom Metadata Strip -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-label-sm text-label-sm gap-2">
+<div class="flex items-center gap-2">
+<span>Showing <strong>5 of 5</strong> active assigned fleet assets</span>
+<span class="text-outline-variant">•</span>
+<span>Buffer Reserve Capacity: 1 Unit</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Red: Code Critical Transit
+          </span>
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Black: Standby Active
+          </span>
+</div>
+</div>
+</div>
+<!-- RIGHT: Logistics & GIS Telemetry Sidebar (4 cols on XL = ~33.3%) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Card 1: Campus Corridor & Traffic Clearances -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">alt_route</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Corridor &amp; Transit Status</h2>
+</div>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<div class="flex flex-col gap-space-sm mt-1">
+<!-- Gate 1 Item -->
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Gate 1 South Perimeter</span>
+<span class="font-label-sm text-label-sm font-bold px-1.5 py-0.5 rounded bg-surface-container text-on-surface">GREEN CLEAR</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Emergency Siren Priority Enabled • Barricades dropped for outbound ALS 01.
+            </p>
+</div>
+<!-- Hackathon Boulevard Item -->
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Hackathon Boulevard</span>
+<span class="font-label-sm text-label-sm font-bold px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface">SLOW TRANSIT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pedestrian Heavy • Escort Required (Runner M-01 Staged with megaphone).
+            </p>
+</div>
+<!-- Highway 5 Link Item -->
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Highway 5 Saidpur Link</span>
+<span class="font-label-sm text-label-sm font-bold px-1.5 py-0.5 rounded bg-surface-container text-on-surface">MODERATE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Travel Time to CMH: ~11 mins • Highway police patrol notified on Radio Ch 2.
+            </p>
+</div>
+</div>
+<!-- Klaxon Trigger -->
+<button class="w-full mt-space-md py-2.5 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-bold rounded flex items-center justify-center gap-2 transition-colors" id="btnKlaxon" type="button">
+<span class="material-symbols-outlined text-[18px] text-error">campaign</span>
+<span>Toggle Traffic Clear Klaxon</span>
+</button>
+</div>
+<!-- Card 2: Live Fleet GPS Telemetry Node -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">satellite_alt</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Live Fleet GPS Telemetry Node</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">CH-882</span>
+</div>
+<!-- Schematic GPS Canvas Node Box -->
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col gap-space-xs relative overflow-hidden">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline uppercase tracking-wider">Tactical Geo-Fence</span>
+<span class="font-mono text-on-surface font-semibold">GRID REF: BAUST-01-A</span>
+</div>
+<!-- Minimal SVG Vector Map Coordinate Representation -->
+<div class="w-full h-32 bg-surface-container rounded relative overflow-hidden flex items-center justify-center">
+<!-- Simulated grid lines -->
+<svg class="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+<pattern height="24" id="grid" patternunits="userSpaceOnUse" width="24">
+<path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="0.75"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Campus Hub Pin -->
+<div class="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<span class="font-label-sm text-[9px] uppercase tracking-wider font-bold text-on-surface mt-1">Auditorium Base</span>
+</div>
+<!-- Unit 01 Moving Node -->
+<div class="absolute right-1/4 top-1/3 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center animate-bounce">
+<div class="w-2.5 h-2.5 rounded-full bg-error ring-4 ring-error/30"></div>
+<span class="font-label-sm text-[9px] uppercase tracking-wider font-bold text-error mt-1">MED-AMB-01 (48km/h)</span>
+</div>
+<!-- Route vector dash line -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<path d="M 80 64 Q 160 30 240 42" fill="none" stroke="#ba1a1a" stroke-dasharray="4 4" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-1">
+<span>Lat: <strong>25.77218° N</strong></span>
+<span>Lon: <strong>88.89104° E</strong></span>
+<span class="text-on-surface font-semibold">HDOP: 0.8 (Excellent)</span>
+</div>
+</div>
+<!-- Latest Transit Log Line -->
+<div class="mt-space-sm p-space-sm bg-surface-container-low/60 rounded flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline mt-0.5">history_toggle_off</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">
+              Unit 01 passed Gate 1 outer checkpoint at 14:26 UTC+6.
+            </span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Verified by Guard Station Bravo</span>
+</div>
+</div>
+<button class="w-full mt-space-sm py-2 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline">download</span>
+<span>Download GPS Route Log (KML/GPX)</span>
+</button>
+</div>
+<!-- Card 3: Emergency Hospital Destination Status -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">local_hospital</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Hospital Receiving Capacity</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">LIVE LINK</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- CMH Detail -->
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Saidpur CMH Emergency Dept</span>
+<span class="font-label-sm text-label-sm font-bold px-1.5 py-0.5 rounded bg-error text-on-error uppercase">Trauma Bay 1 Open</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              ER Attending: Maj. Dr. Faruk notified &amp; scrubbed for PT-4088 arrival.
+            </p>
+<div class="flex items-center gap-2 mt-1 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>Direct Link: +880-551-71400 (Ext. 204)</span>
+</div>
+</div>
+<!-- Secondary Hospital -->
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Saidpur Upazila Health Complex</span>
+<span class="font-label-sm text-label-sm font-semibold px-1.5 py-0.5 rounded bg-surface-container text-on-surface">SECONDARY FACILITY</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Burn Unit: 4 Beds Open • General Trauma ICU: Normal Cadence.
+            </p>
+<div class="flex items-center gap-2 mt-1 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">distance</span>
+<span>Distance from BAUST: 4.8 km (Transit ~8m)</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Central Medical Protocol v4.1</span>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline flex items-center gap-1" type="button">
+<span>Hospital Telemetry Protocol</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple view switcher interaction
+  document.getElementById('btnTableView')?.addEventListener('click', function() {
+    this.classList.add('bg-primary', 'text-on-primary', 'shadow-xs');
+    this.classList.remove('text-on-surface-variant');
+    const gridBtn = document.getElementById('btnGridView');
+    if (gridBtn) {
+      gridBtn.classList.remove('bg-primary', 'text-on-primary', 'shadow-xs');
+      gridBtn.classList.add('text-on-surface-variant');
+    }
+  });
+
+  document.getElementById('btnGridView')?.addEventListener('click', function() {
+    this.classList.add('bg-primary', 'text-on-primary', 'shadow-xs');
+    this.classList.remove('text-on-surface-variant');
+    const tblBtn = document.getElementById('btnTableView');
+    if (tblBtn) {
+      tblBtn.classList.remove('bg-primary', 'text-on-primary', 'shadow-xs');
+      tblBtn.classList.add('text-on-surface-variant');
+    }
+  });
+
+  // Traffic Clear Klaxon Feedback
+  document.getElementById('btnKlaxon')?.addEventListener('click', function() {
+    const isTriggered = this.classList.contains('bg-error');
+    if (!isTriggered) {
+      this.classList.remove('bg-surface-container-low', 'text-on-surface');
+      this.classList.add('bg-error', 'text-on-error');
+      this.innerHTML = '<span class="material-symbols-outlined text-[18px]">volume_up</span><span>KLAXON ACTIVE • CORRIDOR ALERT BROADCASTED</span>';
+    } else {
+      this.classList.remove('bg-error', 'text-on-error');
+      this.classList.add('bg-surface-container-low', 'text-on-surface');
+      this.innerHTML = '<span class="material-symbols-outlined text-[18px] text-error">campaign</span><span>Toggle Traffic Clear Klaxon</span>';
+    }
+  });
+</script></main></div></body></html>

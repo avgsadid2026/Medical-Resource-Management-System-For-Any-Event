@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed-dim":"#c7c6c6","on-secondary-container":"#646464","tertiary-fixed-dim":"#ffb4ab","surface-container-highest":"#e2e2e2","outline":"#76777d","primary-container":"#131b2e","tertiary-fixed":"#ffdad6","on-error-container":"#93000a","tertiary-container":"#410002","surface-dim":"#dadada","surface-container-low":"#f3f3f3","on-secondary-fixed":"#1b1c1c","on-tertiary-container":"#f63a35","error-container":"#ffdad6","surface-bright":"#f9f9f9","primary":"#000000","surface-container-high":"#e8e8e8","secondary-fixed":"#e3e2e2","on-primary-fixed-variant":"#3f465c","surface-container":"#eeeeee","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#93000b","surface":"#f9f9f9","primary-fixed":"#dae2fd","on-secondary-fixed-variant":"#464747","primary-fixed-dim":"#bec6e0","surface-container-lowest":"#ffffff","secondary-container":"#e3e2e2","error":"#ba1a1a","secondary":"#5e5e5e","inverse-surface":"#2f3131","on-primary-fixed":"#131b2e","tertiary":"#000000","on-error":"#ffffff","on-tertiary":"#ffffff","background":"#f9f9f9","on-surface":"#1a1c1c","on-surface-variant":"#45464d","on-secondary":"#ffffff","inverse-on-surface":"#f0f1f1","surface-variant":"#e2e2e2","on-background":"#1a1c1c","outline-variant":"#c6c6cd","surface-tint":"#565e74","on-tertiary-fixed":"#410002","on-primary-container":"#7c839b","on-primary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter":"1rem","margin-desktop":"2rem","margin":"1rem","space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter-desktop":"1.5rem","space-xl":"2rem"},"fontFamily":{"body-sm":["Geist"],"headline-xl":["Hanken Grotesk"],"label-sm":["Geist"],"metric-display":["Geist"],"headline-xl-mobile":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"body-lg":["Geist"],"body-md":["Geist"],"headline-md":["Hanken Grotesk"],"label-lg":["Geist"],"label-md":["Geist"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"metric-display":["32px",{"lineHeight":"36px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["18px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"500"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-outline-variant/30 z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="p-space-md border-b border-outline-variant/30 flex items-center gap-space-sm"><img alt="EMRMS Swiss Medical Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDHm2dagURJ6NIACFolD60UP1XvmdgYCEr574cSt5ZPR6ps8LuT7NVh64XxLF4z3_GLR_aZ_cp9H_fEgkbGCbSCZuJlQU5myE7hpJj6QZaaK5UJgi36cGBPXWeZ8HbeSAqrjpBSWMcjIsOJpKcMkW5iUdstqUYokKqfFvYsTJULUsKH-AEHe6MlC7Q9VzhGReOdPR69DU4QiqPgHHTrUbrp2Q9AiWt6mMRpl9OdTNAF"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface tracking-tight leading-none">EMRMS</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold mt-1">Command Center</span></div></div><div class="px-space-md py-space-xs"><div class="mt-2 px-space-sm py-1 bg-surface-container-low rounded-lg border border-outline-variant/20 flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-tight">EVENT CADENCE</span><span class="font-label-sm text-label-sm text-primary font-bold tracking-tight bg-secondary-fixed px-1.5 py-0.5 rounded">BAUST CSE Fest '25</span></div></div><nav class="flex flex-col px-space-sm py-space-xs gap-0.5" data-active-classes="bg-primary text-on-primary font-semibold"><div class="px-space-sm pt-3 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">CORE DISPATCH</div><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="main-dashboard" href="#"><span class="font-body-md text-body-md">Main Dashboard</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="emergency-alerts" href="#"><span class="font-body-md text-body-md">Emergency Alerts</span><span class="bg-error text-on-error font-label-sm text-label-sm px-1.5 py-0.5 rounded font-bold">2 Critical</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medical-incident-management" href="#"><span class="font-body-md text-body-md">Incident Management</span></a><div class="px-space-sm pt-4 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">CLINICAL &amp; PATIENTS</div><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg transition-colors bg-primary text-on-primary font-semibold" data-path="doctor-management" href="#"><span class="font-body-md text-body-md">Doctor Management</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="nurse-management" href="#"><span class="font-body-md text-body-md">Nurse Management</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="patient-details" href="#"><span class="font-body-md text-body-md">Patient Records</span></a><div class="px-space-sm pt-4 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">RESOURCES &amp; LOGISTICS</div><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medicine-inventory" href="#"><span class="font-body-md text-body-md">Medicine Inventory</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medical-equipment" href="#"><span class="font-body-md text-body-md">Medical Equipment</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="ambulance-management" href="#"><span class="font-body-md text-body-md">Ambulance Fleet</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="medical-stations" href="#"><span class="font-body-md text-body-md">Medical Stations</span></a><div class="px-space-sm pt-4 pb-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">GOVERNANCE &amp; AUDIT</div><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports-and-analytics" href="#"><span class="font-body-md text-body-md">Reports &amp; Analytics</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="activity-and-audit-logs" href="#"><span class="font-body-md text-body-md">Activity &amp; Audit Logs</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="user-and-role-management" href="#"><span class="font-body-md text-body-md">User &amp; Roles</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="system-settings" href="#"><span class="font-body-md text-body-md">Settings</span></a></nav></div><div class="p-space-md border-t border-outline-variant/30 bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Telemetry Synced</span><span class="ml-auto font-label-sm text-label-sm font-semibold text-on-surface bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">v2.4.1</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low border border-outline-variant/30 px-space-sm py-1.5 rounded-lg w-72 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-body-sm text-body-sm flex-1">Search triage, roster, stock...</span><kbd class="font-label-sm text-label-sm bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/30 text-on-surface font-semibold">⌘K</kbd></div><div class="h-4 w-px bg-outline-variant/40"></div><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-error"></span><span class="font-label-sm text-label-sm font-semibold text-on-surface uppercase tracking-tight">Campus Main Pavilion • Live</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low rounded border border-outline-variant/20"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-sm text-label-sm text-on-surface font-medium">Operational (35ms)</span></div><button class="flex items-center gap-1.5 px-3 py-1.5 bg-error text-on-error rounded font-label-sm text-label-sm font-bold uppercase tracking-wider shadow-sm hover:opacity-95 transition-opacity" type="button"><span class="material-symbols-outlined text-[16px]">campaign</span><span>SOS Broadcast</span></button><button class="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="h-5 w-px bg-outline-variant/40"></div><div class="flex items-center gap-space-sm pl-1"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Dr. Elena Vance</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none uppercase">Chief Medical Officer</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmyGKZwSh1Y54Sf76rXKM2VEVSrCKwpQWOutPPxSGZW9jeermi8vNNP24wgURAz8NSPYMJC9YY7YBw3xsPfEfv14nkLR8F3jCryjDEXldB0JwFkNdG9s3GkGZmTfb4Mv9kquZ6l9fDqnQynilf9ueHuUGh1wBR5hdUUD9a6md6s97u286elQay0V3PP2-aHK3qx9-8nuYtquVpDdiQF2I45jzF1OoGGQfIwwGXm2Li"/></div></div></header><main class="relative pt-16 min-h-screen bg-surface w-full px-space-lg"><div class="flex flex-col w-full pb-space-xl">
+<!-- Top Operational Control Band -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md py-space-md bg-surface border-b border-outline-variant/30">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">CLINICAL WORKFORCE</span>
+<span class="text-outline text-body-sm">•</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">BAUST CSE FEST '25</span>
+<span class="text-outline text-body-sm">•</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-primary">MEDICAL SQUAD COMMAND</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-none">Doctor Management &amp; Clinical Duty Roster</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Real-time trauma team dispatch, radio call-signs, station saturation, and emergency deployment logs.</p>
+</div>
+<!-- Quick Action Bar -->
+<div class="flex flex-wrap items-center gap-space-xs sm:gap-space-sm">
+<button class="px-3 py-1.5 bg-surface-container-lowest text-on-surface text-label-md font-label-md rounded border border-outline-variant/40 hover:bg-surface-container-high transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+<span>Schedule Shift Swap</span>
+</button>
+<button class="px-3 py-1.5 bg-surface-container-lowest text-on-surface text-label-md font-label-md rounded border border-outline-variant/40 hover:bg-surface-container-high transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">share_location</span>
+<span>Deploy Doctor to Sector</span>
+</button>
+<button class="px-3.5 py-1.5 bg-primary text-on-primary text-label-md font-label-md font-medium rounded hover:bg-neutral-800 transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">person_add</span>
+<span>+ Register Volunteer Physician</span>
+</button>
+</div>
+</div>
+<!-- KPI Metric Summary Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md mt-space-lg">
+<!-- Stat 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg border border-outline-variant/30 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">TOTAL DOCTORS REGISTERED</span>
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display font-semibold text-on-surface tracking-tight">16</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Physicians</span>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>12 On-Duty</span>
+<span>4 Standby / Off-shift</span>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg border border-outline-variant/30 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">RESUSCITATION / TRAUMA LEADS</span>
+<span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display font-semibold text-on-surface tracking-tight">4 Active</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold bg-surface-container px-1 rounded">100% Locked</span>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Assigned to High-Density Sectors</span>
+<span class="text-primary font-semibold">Station 01 &amp; 03</span>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg border border-outline-variant/30 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">AVG RESPONSE DEPLOYMENT</span>
+<span class="material-symbols-outlined text-[18px]">timer</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display font-semibold text-on-surface tracking-tight">1m 40s</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Target &lt; 2m</span>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Campus Wide Sprint</span>
+<span class="font-semibold text-on-surface">-18s vs Last Year</span>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg border border-outline-variant/30 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">TRIAGE &amp; FIELD CONSULTATIONS</span>
+<span class="material-symbols-outlined text-[18px]">clinical_notes</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display font-semibold text-on-surface tracking-tight">18 Done</span>
+<span class="font-label-sm text-label-sm text-error bg-error-container/30 px-1 py-0.5 rounded font-bold">2 Live Incidents</span>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Current Sector Saturation</span>
+<span class="font-semibold text-on-surface">Optimal</span>
+</div>
+</div>
+</div>
+<!-- Search, Filters, Roster Toolstrip -->
+<div class="mt-space-lg p-space-sm bg-surface-container-lowest rounded-lg border border-outline-variant/30 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm shadow-sm">
+<div class="flex flex-1 items-center gap-space-sm">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low border border-outline-variant/30 rounded w-full max-w-md text-on-surface-variant focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline">search</span>
+<input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline w-full" id="rosterSearch" placeholder="Search physician by name, BMDC reg number, specialization..." type="text"/>
+<kbd class="font-label-sm text-label-sm bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/30 text-on-surface font-semibold">⌘K</kbd>
+</div>
+<div class="h-6 w-px bg-outline-variant/40 hidden md:block"></div>
+<!-- Quick filters -->
+<div class="flex items-center gap-2 overflow-x-auto">
+<select class="bg-surface-container-low border border-outline-variant/30 font-label-sm text-label-sm rounded px-2.5 py-1.5 text-on-surface font-medium outline-none focus:border-primary">
+<option>All Stations (4 Sectors)</option>
+<option>Station 01: Main Auditorium</option>
+<option>Station 02: Sports Field</option>
+<option>Station 03: CSE Labs &amp; Atrium</option>
+<option>Station 04: Dorm Annex</option>
+</select>
+<select class="bg-surface-container-low border border-outline-variant/30 font-label-sm text-label-sm rounded px-2.5 py-1.5 text-on-surface font-medium outline-none focus:border-primary">
+<option>All Specializations</option>
+<option>Emergency Medicine</option>
+<option>Trauma / Resuscitation</option>
+<option>Internal Medicine</option>
+<option>Orthopedics</option>
+<option>Cardiology</option>
+</select>
+<select class="bg-surface-container-low border border-outline-variant/30 font-label-sm text-label-sm rounded px-2.5 py-1.5 text-on-surface font-medium outline-none focus:border-primary">
+<option>Status: All (Active &amp; Standby)</option>
+<option>Active On-Duty</option>
+<option>Code Red Responding</option>
+<option>In-Transit</option>
+<option>Standby On-Call</option>
+</select>
+</div>
+</div>
+<!-- Right layout switcher -->
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded border border-outline-variant/20 self-end lg:self-auto">
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded font-semibold bg-primary text-on-primary shadow-xs flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">table_rows</span>
+<span>Table View</span>
+</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded text-on-surface-variant hover:text-on-surface flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">grid_view</span>
+<span>Roster Grid</span>
+</button>
+</div>
+</div>
+<!-- Main Split Layout: Data Table + Operational Command Sub-Widgets -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg mt-space-md">
+<!-- Left Col (Table): 8 Columns -->
+<div class="xl:col-span-8 flex flex-col bg-surface-container-lowest rounded-lg border border-outline-variant/30 shadow-sm overflow-hidden">
+<div class="px-space-md py-space-sm border-b border-outline-variant/20 flex items-center justify-between bg-surface-container-low/40">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-on-surface">DUTY ROSTER LEDGER</span>
+<span class="bg-surface-container px-2 py-0.5 rounded font-label-sm text-label-sm font-bold text-on-surface">16 Registered</span>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm text-outline">
+<span>Sort: Sector Assignment (Asc)</span>
+<span class="material-symbols-outlined text-[16px]">swap_vert</span>
+</div>
+</div>
+<!-- High-Density Clinical Data Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse" id="rosterTable">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/30 text-outline font-label-sm text-label-sm uppercase tracking-wider select-none">
+<th class="py-2.5 px-3 font-semibold">Physician Details</th>
+<th class="py-2.5 px-3 font-semibold">Specialization</th>
+<th class="py-2.5 px-3 font-semibold">Post / Sector</th>
+<th class="py-2.5 px-3 font-semibold">Operational Status</th>
+<th class="py-2.5 px-3 font-semibold text-center">Radio Call / Ext</th>
+<th class="py-2.5 px-3 font-semibold text-center">Patients</th>
+<th class="py-2.5 px-3 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm text-on-surface">
+<!-- Doctor 1: Dr. Elena Vance -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Dr. Elena Vance, Senior Female Chief Medical Officer wearing white clinical coat and stethoscope against minimalist clinical gray background, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhf6KqtsGryqTas56xKBxS0ycDigkp0IVShRZMCV9SlErilv0aptWKiKYvPyWm25whcSLN7I2SzeZvd7h687PtYXKZN91FVPo492RXnVz-gmnXs1T6FNDff-Tr5q1IE9WH5n8Ru_qenw0ChNs48XavG_pCjnkRbIZawgH22CYSXdL6kb0sxn8LSBhteFz6xHkTKZwqxWQqmRjtpZrFSrqjmjdt2AiLEFM4RlLboKrx"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Dr. Elena Vance</span>
+<span class="bg-primary text-on-primary font-label-sm text-label-sm px-1 py-0.2 rounded font-bold uppercase tracking-tight">CMO</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline truncate">BMDC #A-48921 • Lead CMO</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-label-md text-on-surface font-medium block">Emergency Medicine</span>
+<span class="font-label-sm text-label-sm text-outline">Trauma Team Alpha</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">apartment</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">Station 01: Main Aud</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline pl-5">Zone Alpha Resus Bay</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active On-Duty
+                </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-mono text-label-md font-semibold text-on-surface">MED-CH1</span>
+<span class="font-label-sm text-label-sm text-outline">Ext: 401</span>
+</div>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="font-mono font-bold text-label-md text-on-surface bg-surface-container-low px-2 py-0.5 rounded">06</span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Quick Dispatch" type="button">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">account_box</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Reassign Station" type="button">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Doctor 2: Dr. Tariq Hasan (Critical / Code Red) -->
+<tr class="hover:bg-error-container/10 transition-colors group bg-error-container/5">
+<td class="py-3 px-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Dr. Tariq Hasan, male critical care specialist physician in dark scrub with trauma badge, calm concentrated expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxAZ7-ZRWGdRr6uvh7kXC4OCWAuLKrGsWFOkmxuHFafkZ9WdIdOYwpMs8OTm2JHvx8AvRluMLyygTdtx-jhwS11Twfy4EWPF9N3x-2lCtCSlW2EOT_sr8JnoAbXj2SGQQjnikm9gmZNwPOCTWv1eDl7m3-bmrcZYXS1H9W0KEr8ZvsANxWlFltD61joAfiiAvP35O0ZPaQSHSFCIYQxat3EsQLBELihzWNa6HtFAMr"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Dr. Tariq Hasan</span>
+<span class="font-label-sm text-label-sm text-outline truncate">BMDC #A-63319 • Attending</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-label-md text-on-surface font-medium block">Critical Care &amp; Trauma</span>
+<span class="font-label-sm text-label-sm text-outline">Rapid Response Lead</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-error">directions_run</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">Station 03 ECE / Mobile</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline pl-5">Hardware Lab Concourse</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-error text-on-error font-label-sm text-label-sm font-bold shadow-xs animate-pulse">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                  Code Red INC-1044
+                </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-mono text-label-md font-semibold text-error">MED-RR1</span>
+<span class="font-label-sm text-label-sm text-outline">Ext: 403</span>
+</div>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="font-mono font-bold text-label-md text-error bg-error-container/30 px-2 py-0.5 rounded">05</span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded text-error hover:bg-error-container/30 transition-colors" title="Live Telemetry Link" type="button">
+<span class="material-symbols-outlined text-[18px]">radiology</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">account_box</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Reassign Station" type="button">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Doctor 3: Dr. Shamim Reza -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Dr. Shamim Reza, male general practitioner in light blue clinical polo shirt, friendly confident medical gaze" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqmucUQD4kk10XTxGLvkBW97nnhka6nG90Cthcm0AC5VY7ItDISJ64jaGjHwVWbRXuzypaRQ6ZqZeaPutl8yU8XFZ7NlKi2UI4NW7totzw_iaSz12Y7x5ef3kAZQqqT4eZM6W6lSLCYDDXTlOBxppd0EYFRp8qNw9O8deJx6PlhU6xS_3ZhJQN9wJwFd5aXLv266UmNJ8017nbI8ow_yuktatdUupR4OG7eqC7FN3"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Dr. Shamim Reza</span>
+<span class="font-label-sm text-label-sm text-outline truncate">BMDC #A-55210 • Field Med</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-label-md text-on-surface font-medium block">General / Heat Exhaustion</span>
+<span class="font-label-sm text-label-sm text-outline">Hydration &amp; Vitals Lead</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">sports_soccer</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">Station 02: Sports Field</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline pl-5">Perimeter Triage Tent</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active On-Duty
+                </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-mono text-label-md font-semibold text-on-surface">MED-CH2</span>
+<span class="font-label-sm text-label-sm text-outline">Ext: 402</span>
+</div>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="font-mono font-bold text-label-md text-on-surface bg-surface-container-low px-2 py-0.5 rounded">04</span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Quick Dispatch" type="button">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">account_box</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Reassign Station" type="button">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Doctor 4: Dr. Nusrat Jahan -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of Dr. Nusrat Jahan, female internal medicine doctor wearing modest clinical attire with badge, sharp professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7b2GBkHDh2mNnvjTuMfC3HiQmcNAIaKXUvVZu1D6xcYuys8FhQMueW8GvbgzWZeR3_BzPoGjVwYOh95iuKljOf1csop5DxHcpls1seIGjPYL_aECUFt7o7wWFV2kIXhN_PG6qlnjT8IGkyC0BK1lNLgSyArXl-47jOCpkw0ug7_NgCC00s38V3pq0lWlTHOHUPK4llM4f43xn_PHCg_oQqsrDDMfUgvjEMIgSOUIo"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Dr. Nusrat Jahan</span>
+<span class="font-label-sm text-label-sm text-outline truncate">BMDC #A-71190 • Consultant</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-label-md text-on-surface font-medium block">Internal Medicine</span>
+<span class="font-label-sm text-label-sm text-outline">Allergy &amp; Anaphylaxis</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">apartment</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">Station 01: Main Aud</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline pl-5">West Clinical Room</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active On-Duty
+                </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-mono text-label-md font-semibold text-on-surface">MED-CH1</span>
+<span class="font-label-sm text-label-sm text-outline">Ext: 404</span>
+</div>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="font-mono font-bold text-label-md text-on-surface bg-surface-container-low px-2 py-0.5 rounded">03</span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Quick Dispatch" type="button">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">account_box</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Reassign Station" type="button">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Doctor 5: Dr. Ariful Islam (In-Transit) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Dr. Ariful Islam, male orthopedic surgeon wearing emergency response jacket, disciplined medical posture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAmPYXCYn4-haQWRpn3-GwF8ZN_jHAQv9dX3HYHASZcaV3a4w4TzQb0QqiScz66vDCHZjwnbZMJeQGlk8aBvQHDhZM7-texDA0YvlAVyOmSDm96tENhOv7nwsWtAMCo_SeQpa3NJoA_hPDX686ItzZBd-M7JrikaoWCSZJD2RYf1HdP9hTd-Cq0vxO7-6V2GVn0lju6ySUPctyPEkVa2DFBu3nY2makXnqopKlEFRH"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Dr. Ariful Islam</span>
+<span class="font-label-sm text-label-sm text-outline truncate">BMDC #A-58204 • Registrar</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-label-md text-on-surface font-medium block">Orthopedic / Splinting</span>
+<span class="font-label-sm text-label-sm text-outline">Fracture Mobilization</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">commute</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">Transit -&gt; Station 02</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline pl-5">En Route Sports Field</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  In-Transit Field
+                </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-mono text-label-md font-semibold text-on-surface">MED-MOB</span>
+<span class="font-label-sm text-label-sm text-outline">Ext: 405</span>
+</div>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="font-mono font-bold text-label-md text-on-surface bg-surface-container-low px-2 py-0.5 rounded">02</span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Quick Dispatch" type="button">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">account_box</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Reassign Station" type="button">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Doctor 6: Dr. Fahmida Rahman (Standby) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Dr. Fahmida Rahman, cardiologist physician wearing clean medical uniform with stethoscope and ID lanyard, modern clinical setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUW41W3OLeokNH0ngcsndbsJcchr1UXGBym0krULDairjF0uv6SzwA7chp71p1BiIWp6xqO1YiI0-tDPyefM7D7MlthOaUaXuqaFgua4hr440t9DDa1z10UYpMEzt6Dx09r4guoRkZsajRgauPtOLoujoc7LcwhghbuP7uMvRzNtSFhAE2-u1ED3UgbqvC2qqrAa04HWIHDyKfWxL1RwZJJ6aTIm0Ce0YiqMRfws0m"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Dr. Fahmida Rahman</span>
+<span class="font-label-sm text-label-sm text-outline truncate">BMDC #A-69041 • Associate</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-label-md text-on-surface font-medium block">Cardiologist</span>
+<span class="font-label-sm text-label-sm text-outline">Defib &amp; Arrhythmia Lead</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">night_shelter</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">Central Clinic</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline pl-5">Resting Bay (Standby)</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-low text-outline font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+                  Standby On-Call
+                </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-mono text-label-md font-semibold text-on-surface">MED-CH4</span>
+<span class="font-label-sm text-label-sm text-outline">Ext: 406</span>
+</div>
+</td>
+<td class="py-3 px-3 text-center">
+<span class="font-mono font-bold text-label-md text-on-surface bg-surface-container-low px-2 py-0.5 rounded">01</span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Quick Dispatch" type="button">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">account_box</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Reassign Station" type="button">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Strip -->
+<div class="p-space-sm border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-space-sm bg-surface-container-low/40">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Showing <span class="font-semibold text-on-surface">1</span> to <span class="font-semibold text-on-surface">6</span> of <span class="font-semibold text-on-surface">16</span> registered doctors</span>
+<span class="text-outline text-body-sm">•</span>
+<span class="font-label-sm text-label-sm text-outline">Filtered by: All Active</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 flex items-center justify-center rounded border border-outline-variant/30 text-outline hover:bg-surface-container-high hover:text-on-surface disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold" type="button">1</button>
+<button class="w-7 h-7 flex items-center justify-center rounded border border-outline-variant/30 text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-medium" type="button">2</button>
+<button class="w-7 h-7 flex items-center justify-center rounded border border-outline-variant/30 text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-medium" type="button">3</button>
+<button class="w-7 h-7 flex items-center justify-center rounded border border-outline-variant/30 text-outline hover:bg-surface-container-high hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Col: Command Telemetry & Tactical Sector Distribution (4 Columns) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Sector Doctor Distribution Widget -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface">hub</span>
+<span class="font-label-md text-label-md font-semibold uppercase tracking-wider text-on-surface">Sector Coverage</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-primary bg-surface-container px-1.5 py-0.5 rounded">12 Deployed</span>
+</div>
+<div class="mt-3 flex flex-col gap-3">
+<!-- Sector 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-medium text-on-surface">Station 01: Main Auditorium</span>
+<span class="font-semibold text-on-surface">4 / 4 Full</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Sector 2 (Shortage / Alert) -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-medium text-on-surface">Station 02: Sports Field (Hot Zone)</span>
+<span class="font-bold text-error">3 / 4 Needed (+1)</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<!-- Sector 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-medium text-on-surface">Station 03: CSE Labs &amp; Atrium</span>
+<span class="font-semibold text-on-surface">3 / 3 Optimal</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Sector 4 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-medium text-on-surface">Station 04: Dorm Annex</span>
+<span class="font-semibold text-on-surface">2 / 2 Stable</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-1.5 text-label-sm font-label-sm font-semibold text-on-surface bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 rounded transition-colors text-center" type="button">
+          Request Sector Reinforcements
+        </button>
+</div>
+<!-- Live Tactical Radio Relay Widget -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface">cell_tower</span>
+<span class="font-label-md text-label-md font-semibold uppercase tracking-wider text-on-surface">On-Call Radio Channels</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+</div>
+<div class="mt-3 flex flex-col divide-y divide-outline-variant/20">
+<div class="py-2 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Channel 01 • Main Aud Bay</span>
+<span class="font-label-sm text-label-sm text-outline">Lead: Dr. Vance (462.550 MHz)</span>
+</div>
+<span class="font-mono text-label-sm text-label-sm font-bold bg-surface-container px-2 py-0.5 rounded text-on-surface">ACTIVE</span>
+</div>
+<div class="py-2 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-error">Channel 02 • Rapid Response</span>
+<span class="font-label-sm text-label-sm text-outline">Lead: Dr. Tariq (462.600 MHz)</span>
+</div>
+<span class="font-mono text-label-sm text-label-sm font-bold bg-error text-on-error px-2 py-0.5 rounded">CODE RED</span>
+</div>
+<div class="py-2 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Channel 03 • Perimeter &amp; Ground</span>
+<span class="font-label-sm text-label-sm text-outline">Lead: Dr. Reza (462.650 MHz)</span>
+</div>
+<span class="font-mono text-label-sm text-label-sm font-bold bg-surface-container px-2 py-0.5 rounded text-on-surface">CLEAR</span>
+</div>
+</div>
+</div>
+<!-- Clinical Lead Protocol Directives -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="flex items-center gap-1.5 pb-2 border-b border-outline-variant/20">
+<span class="material-symbols-outlined text-[18px] text-on-surface">task_alt</span>
+<span class="font-label-md text-label-md font-semibold uppercase tracking-wider text-on-surface">Lead Directives &amp; Logs</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+          Current operational phase: <span class="font-semibold text-on-surface">Phase II (Mid-Day Peak Volume)</span>. Heat stroke mitigation active at Station 02.
+        </p>
+<div class="grid grid-cols-2 gap-2 mt-3">
+<button class="px-2.5 py-2 rounded bg-surface-container-low border border-outline-variant/30 hover:bg-surface-container-high transition-colors flex flex-col items-center justify-center text-center" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface mb-0.5">download</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Download Shift Log</span>
+</button>
+<button class="px-2.5 py-2 rounded bg-surface-container-low border border-outline-variant/30 hover:bg-surface-container-high transition-colors flex flex-col items-center justify-center text-center" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface mb-0.5">campaign</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Broadcast Memo</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const searchInput = document.getElementById('rosterSearch');
+    const table = document.getElementById('rosterTable');
+    if (!searchInput || !table) return;
+
+    searchInput.addEventListener('input', function(e) {
+      const q = e.target.value.toLowerCase().trim();
+      const rows = table.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+
+    window.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+  })();
+</script></main></div></body></html>
