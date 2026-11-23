@@ -82,7 +82,7 @@ export function ReportsAnalyticsPage() {
       <PageHeader
         breadcrumbs={['MEDIJIGS', 'GOVERNANCE & AUDIT', 'REPORTS & ANALYTICS']}
         title="Reports & Operational Analytics"
-        subtitle="Live PostgreSQL aggregations across clinical encounters, triage acuity, event velocity, and medicine consumption."
+        subtitle="Live summaries across patient care, triage priorities, incident activity, and medicine usage."
         actions={
           <div className="flex items-center flex-wrap gap-2.5">
             {canExportIncidents && (
@@ -123,7 +123,7 @@ export function ReportsAnalyticsPage() {
 
       {isLoading || !data ? (
         <div className="p-12 text-center bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 text-on-surface-variant font-sans text-[14px]">
-          Aggregating live operational telemetry from PostgreSQL...
+          Loading live reports and analytics...
         </div>
       ) : (
         <>

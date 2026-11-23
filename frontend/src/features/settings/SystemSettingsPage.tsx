@@ -159,7 +159,7 @@ export function SystemSettingsPage() {
       <PageHeader
         breadcrumbs={['MEDIJIGS', 'GOVERNANCE & AUDIT', 'SYSTEM SETTINGS']}
         title="System Configuration & Event Parameters"
-        subtitle="Manage event metadata, clinical triage SLA targets, and polling/session parameters stored in system_settings."
+        subtitle="Manage event details, emergency response targets, and auto-refresh & session settings."
       />
 
       <ErrorBanner
@@ -187,7 +187,7 @@ export function SystemSettingsPage() {
                   Interface Theme &amp; Appearance
                 </h2>
                 <p className="font-sans text-[12.5px] text-on-surface-variant mt-0.5">
-                  Select your preferred command center appearance. Theme preferences are automatically saved in local storage.
+                  Select your preferred appearance. Your theme choice is saved automatically on this device.
                 </p>
               </div>
               <span className="font-sans text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg bg-surface-container-low border border-outline-variant/50 text-on-surface-variant">
@@ -262,7 +262,7 @@ export function SystemSettingsPage() {
                 Active Event Profile
               </h2>
               <p className="font-sans text-[12px] text-on-surface-variant mt-0.5">
-                Key: <code className="text-primary font-mono bg-primary-container px-1.5 py-0.5 rounded">event.profile</code>
+                Basic event information displayed across the dashboard and reports.
               </p>
             </div>
             <div>
@@ -348,10 +348,10 @@ export function SystemSettingsPage() {
           >
             <div className="border-b border-outline-variant/20 pb-3">
               <h2 className="font-headline-md text-headline-md text-on-surface">
-                Clinical Triage Response SLAs
+                Emergency Response Time Targets
               </h2>
               <p className="font-body-sm text-body-sm text-on-surface-variant">
-                Key: <code className="text-primary">triage.slas</code> (target seconds)
+                Target response time in seconds for each priority level.
               </p>
             </div>
             <div className="space-y-3">
@@ -398,7 +398,7 @@ export function SystemSettingsPage() {
                 disabled={saveMutation.isPending}
                 className="px-4 py-2 rounded bg-primary text-on-primary font-label-md text-label-md font-semibold hover:opacity-90 disabled:opacity-50"
               >
-                Save Triage SLAs
+                Save Response Targets
               </button>
             </div>
           </form>
@@ -411,10 +411,10 @@ export function SystemSettingsPage() {
             <div className="border-b border-outline-variant/20 pb-3 flex items-center justify-between">
               <div>
                 <h2 className="font-headline-md text-headline-md text-on-surface">
-                  Polling & Session Security
+                  Auto-Refresh &amp; Session Security
                 </h2>
                 <p className="font-body-sm text-body-sm text-on-surface-variant">
-                  Key: <code className="text-primary">telemetry.polling</code>
+                  Control how often screens refresh and when inactive logins expire.
                 </p>
               </div>
               <span className="px-2 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm uppercase font-bold text-outline">
@@ -424,7 +424,7 @@ export function SystemSettingsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
                 <label className="block font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold mb-1">
-                  Alert Poll (sec)
+                  Alert Refresh (sec)
                 </label>
                 <input
                   type="number"
@@ -437,7 +437,7 @@ export function SystemSettingsPage() {
               </div>
               <div>
                 <label className="block font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold mb-1">
-                  Dashboard Poll (sec)
+                  Dashboard Refresh (sec)
                 </label>
                 <input
                   type="number"
@@ -450,7 +450,7 @@ export function SystemSettingsPage() {
               </div>
               <div>
                 <label className="block font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold mb-1">
-                  Session TTL (hrs)
+                  Login Timeout (hrs)
                 </label>
                 <input
                   type="number"
@@ -474,32 +474,28 @@ export function SystemSettingsPage() {
             </div>
           </form>
 
-          {/* Multi-Event Integration Readiness Card */}
+          {/* Multi-Event Readiness Card */}
           <section className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm space-y-3">
             <div className="border-b border-outline-variant/20 pb-3 flex items-center justify-between">
               <h2 className="font-headline-md text-headline-md text-on-surface">
-                MEDIJIGS Multi-Event Integration Readiness
+                About MEDIJIGS Platform
               </h2>
               <span className="px-2 py-0.5 rounded bg-secondary-fixed text-primary font-label-sm text-label-sm uppercase font-bold">
-                Standalone v1.0
+                Version 1.0
               </span>
             </div>
             <p className="font-body-sm text-body-sm text-on-surface-variant">
-              MEDIJIGS (Medical &amp; Resource Management System For Any Event) runs as an isolated standalone web application with a clean
-              versioned REST API (<code className="text-primary">/api/v1/*</code>)
-              and PostgreSQL persistence.
+              MEDIJIGS (Medical &amp; Resource Management System For Any Event) helps medical teams coordinate incidents, patient care, staff, medicines, and ambulances from one place.
             </p>
             <ul className="space-y-2 font-body-sm text-body-sm text-on-surface-variant list-disc pl-5">
               <li>
-                Flexible deployment target: supports any campus, festival, sports, or public event with dedicated session cookie isolation.
+                Ready for any event: works for campus festivals, sports tournaments, conferences, and public gatherings.
               </li>
               <li>
-                Academic DBMS prototype notice: uses synthetic demo records only;
-                not certified for real clinical or life-critical emergency triage.
+                Demo notice: currently uses sample event records for demonstration and training purposes.
               </li>
               <li>
-                Deferred v2 enhancements: real-time WebSockets, live ambulance GPS,
-                SMS gateway alerts, and cold-chain IoT telemetry.
+                Planned upgrades: live ambulance GPS tracking, SMS emergency alerts, and cold-storage temperature monitoring.
               </li>
             </ul>
           </section>

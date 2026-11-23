@@ -170,7 +170,7 @@ export function AmbulanceFleetPage() {
       <PageHeader
         breadcrumbs={['Resources & Logistics', 'Ambulance Fleet']}
         title="Ambulance Fleet & Rapid Transit Command"
-        subtitle="Manage standby units, crew assignments, and transactional patient transfer dispatches."
+        subtitle="Manage standby ambulances, crew assignments, and patient transfer dispatches."
         actions={
           <div className="flex items-center gap-2">
             {canManage && (

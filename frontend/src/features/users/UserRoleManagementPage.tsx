@@ -48,12 +48,12 @@ const ALL_ROLES: UserRole[] = [
 ];
 
 const RBAC_MATRIX: Array<{ role: UserRole; scope: string }> = [
-  { role: 'SUPER_ADMIN', scope: 'Full system access, users, audit logs & polling settings' },
-  { role: 'MEDICAL_ADMIN', scope: 'Clinical oversight, staff, reports, alerts & non-SuperAdmin accounts' },
-  { role: 'DOCTOR', scope: 'Full patient PHI, vitals, clinical notes, bed allocation & prescribing' },
-  { role: 'NURSE', scope: 'Patient triage, vitals, medicine dispensation & controlled-med co-sign' },
-  { role: 'DISPATCHER', scope: 'Alerts, ambulances, equipment & stations (patient PHI blocked)' },
-  { role: 'VOLUNTEER', scope: 'Field incident reporting & station directory only (PHI strictly blocked)' },
+  { role: 'SUPER_ADMIN', scope: 'Full system access, staff accounts, activity logs & security settings' },
+  { role: 'MEDICAL_ADMIN', scope: 'Medical oversight, staff, reports, alerts & team accounts' },
+  { role: 'DOCTOR', scope: 'Full patient medical records, vitals, clinical notes, beds & prescribing' },
+  { role: 'NURSE', scope: 'Patient triage, vitals, medicine dispensing & controlled-med co-sign' },
+  { role: 'DISPATCHER', scope: 'Alerts, ambulances, equipment & stations (patient records hidden)' },
+  { role: 'VOLUNTEER', scope: 'Field incident reporting & station directory only (patient records hidden)' },
 ];
 
 export function UserRoleManagementPage() {
@@ -156,8 +156,8 @@ export function UserRoleManagementPage() {
     <div className="space-y-space-lg">
       <PageHeader
         breadcrumbs={['MEDIJIGS', 'GOVERNANCE & AUDIT', 'USER & ROLE MANAGEMENT']}
-        title="User Accounts & 6-Role RBAC Control"
-        subtitle="Soft account deactivation preserves clinical audit history. Deactivating an account immediately revokes its PostgreSQL sessions."
+        title="User Accounts & Role Permissions"
+        subtitle="Deactivating an account keeps past medical records intact and immediately signs the user out."
         actions={
           <button
             type="button"
@@ -168,7 +168,7 @@ export function UserRoleManagementPage() {
             className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-primary text-on-primary font-label-md text-label-md font-semibold hover:opacity-90 transition-opacity"
           >
             <UserPlus className="w-4 h-4 text-white" />
-            Provision Account
+            Add Account
           </button>
         }
       />
@@ -183,7 +183,7 @@ export function UserRoleManagementPage() {
           label="Total Accounts"
           value={users.length}
           icon="groups"
-          footerLeft="RBAC Tiers"
+          footerLeft="Access Levels"
           footerRight="6 Roles"
         />
         <KpiCard
@@ -194,18 +194,18 @@ export function UserRoleManagementPage() {
           footerRight="Enabled"
         />
         <KpiCard
-          label="Live DB Sessions"
+          label="Active Logins"
           value={activeSessions.length}
           icon="devices"
-          footerLeft="Store"
-          footerRight="user_sessions"
+          footerLeft="Status"
+          footerRight="Signed In"
         />
         <KpiCard
           label="Deactivated Accounts"
           value={deactivatedCount}
           icon="person_off"
           footerLeft="History preserved"
-          footerRight="Soft-disabled"
+          footerRight="Paused"
         />
       </div>
 
@@ -215,10 +215,10 @@ export function UserRoleManagementPage() {
         <section className="xl:col-span-8 bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 shadow-card overflow-hidden">
           <div className="px-5 py-4 border-b border-outline-variant/30 bg-surface-container-low/70 flex items-center justify-between">
             <h2 className="font-headline text-[17px] font-bold text-on-surface">
-              Staff & Volunteer Accounts
+              Staff &amp; Volunteer Accounts
             </h2>
             <span className="font-sans text-[11px] uppercase tracking-wider text-outline font-semibold bg-surface-container-low px-2.5 py-1 rounded-lg border border-outline-variant/40">
-              No Hard Deletes
+              History Preserved
             </span>
           </div>
           <div className="overflow-x-auto">
@@ -324,9 +324,9 @@ export function UserRoleManagementPage() {
                               disabled={revokeSessionsMutation.isPending}
                               onClick={() => revokeSessionsMutation.mutate(acct.id)}
                               className="px-2.5 py-1 rounded border border-outline-variant/50 text-on-surface-variant font-label-sm text-label-sm font-semibold hover:bg-surface-container-high"
-                              title="Terminate all active sessions in PostgreSQL"
+                              title="Sign out this user from all active devices"
                             >
-                              Revoke Sessions
+                              Sign Out Devices
                             </button>
                           )}
                         </td>
@@ -343,7 +343,7 @@ export function UserRoleManagementPage() {
         <div className="xl:col-span-4 space-y-space-md">
           <section className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm">
             <h2 className="font-headline-md text-headline-md text-on-surface mb-3">
-              6-Role RBAC Policy Matrix
+              Role Permissions Overview
             </h2>
             <div className="space-y-2.5">
               {RBAC_MATRIX.map((item) => (
@@ -365,7 +365,7 @@ export function UserRoleManagementPage() {
           <section className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm">
             <div className="flex items-center justify-between mb-3">
               <h2 className="font-headline-md text-headline-md text-on-surface">
-                Active PostgreSQL Sessions
+                Active User Logins
               </h2>
               <span className="font-label-sm text-label-sm font-bold text-primary tabular-metrics">
                 {activeSessions.length}

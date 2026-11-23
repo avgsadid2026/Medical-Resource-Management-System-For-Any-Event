@@ -129,7 +129,7 @@ export function EmergencyAlertsPage() {
       <PageHeader
         breadcrumbs={['Core Dispatch', 'Emergency Alerts']}
         title="Emergency Alerts & Command Queue"
-        subtitle="Real-time escalation tracking, response acknowledgement, and triage SLA oversight."
+        subtitle="Real-time emergency alerts, response tracking, and target response times."
         actions={
           canBroadcast && (
             <button
@@ -161,7 +161,7 @@ export function EmergencyAlertsPage() {
           value={alerts.filter((a) => a.status === 'RESOLVED').length}
           icon="check_circle"
         />
-        <KpiCard label="Auto-Refresh" value="5s" subValue="Polling" icon="sync" />
+        <KpiCard label="Auto-Refresh" value="5s" subValue="Auto Sync" icon="sync" />
       </div>
 
       {/* Filter Bar */}
@@ -280,7 +280,7 @@ export function EmergencyAlertsPage() {
                 <th className="py-2.5 px-4">Tier</th>
                 <th className="py-2.5 px-4">Examples</th>
                 <th className="py-2.5 px-4">Primary Response</th>
-                <th className="py-2.5 px-4 text-right">Target SLA</th>
+                <th className="py-2.5 px-4 text-right">Target Time</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-outline-variant/20">

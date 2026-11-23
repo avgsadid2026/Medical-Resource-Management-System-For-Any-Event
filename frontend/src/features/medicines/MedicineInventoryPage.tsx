@@ -208,7 +208,7 @@ export function MedicineInventoryPage() {
       <PageHeader
         breadcrumbs={['Resources & Logistics', 'Medicine Inventory']}
         title="Medicine & Pharmaceutical Inventory"
-        subtitle="Formulary stock levels across Central Depot and field stations, with transactional dispensation & dual-user verification for controlled drugs."
+        subtitle="Medicine stock levels across Central Depot and field stations, with tracked dispensing and two-person verification for controlled drugs."
         actions={
           <div className="flex items-center gap-2.5 flex-wrap">
             {canDispense && (
@@ -522,7 +522,7 @@ export function MedicineInventoryPage() {
       {/* Transactional Dispense Modal */}
       <Modal
         open={dispenseOpen}
-        title="Dispense Medicine (PostgreSQL Transaction)"
+        title="Dispense Medicine"
         onClose={() => setDispenseOpen(false)}
       >
         <form

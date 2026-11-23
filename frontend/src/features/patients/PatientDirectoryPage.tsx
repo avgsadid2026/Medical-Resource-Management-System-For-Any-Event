@@ -95,7 +95,7 @@ export function PatientDirectoryPage() {
       <PageHeader
         breadcrumbs={['Clinical & Patients', 'Patient Records']}
         title="Patient EHR Directory"
-        subtitle="Restricted clinical access (Medical Admin, Doctors, Nurses). Click any patient to open their full EHR dossier."
+        subtitle="Restricted clinical access (Medical Admin, Doctor, Nurse). Click any patient to open their full medical record."
         actions={
           <button
             type="button"

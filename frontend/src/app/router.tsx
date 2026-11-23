@@ -81,7 +81,7 @@ function RoleGuard({
         <div className="flex items-center gap-2 text-error">
           <ShieldAlert className="w-6 h-6 shrink-0" />
           <h1 className="font-headline-md text-headline-md">
-            403 — Role Access Restricted
+            Access Restricted
           </h1>
         </div>
         <p className="font-body-md text-body-md text-on-surface-variant">
@@ -89,11 +89,11 @@ function RoleGuard({
           <strong className="text-on-surface">
             {user ? ROLE_LABELS[user.role] : 'Guest'}
           </strong>
-          ) does not have permission to view this clinical or governance module.
+          ) does not have permission to view this section.
         </p>
         <p className="font-body-sm text-body-sm text-outline">
-          Patient medical records (PHI) are strictly restricted to authorized
-          clinical personnel and medical administrators.
+          Patient medical records are strictly restricted to authorized
+          medical staff and administrators.
         </p>
       </div>
     );

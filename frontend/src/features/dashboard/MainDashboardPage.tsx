@@ -153,7 +153,7 @@ export function MainDashboardPage() {
     return (
       <div className="p-12 text-center font-sans text-[14px] text-on-surface-variant flex flex-col items-center justify-center gap-3">
         <div className="w-8 h-8 border-3 border-primary/20 border-t-primary rounded-full animate-spin" />
-        <span>Loading command dashboard from PostgreSQL...</span>
+        <span>Loading command dashboard...</span>
       </div>
     );
   }
@@ -461,7 +461,7 @@ export function MainDashboardPage() {
           icon="vital_signs"
           value={kpis.activeIncidents}
           footerLeft="Open"
-          footerRight="Live DB"
+          footerRight="Live"
         />
         <KpiCard
           label="Critical (P1)"
@@ -539,7 +539,7 @@ export function MainDashboardPage() {
                     Recent Medical Incidents
                   </h2>
                   <p className="font-sans text-[12px] text-on-surface-variant leading-normal mt-0.5">
-                    Live database stream across campus sectors
+                    Live updates across event locations
                   </p>
                 </div>
               </div>

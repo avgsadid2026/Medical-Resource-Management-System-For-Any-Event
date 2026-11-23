@@ -212,7 +212,7 @@ export function LoginPage() {
       setError(
         err instanceof ApiError
           ? err.message
-          : 'Unable to connect to MEDIJIGS backend server.'
+          : 'Unable to connect to MEDIJIGS server.'
       );
     } finally {
       setSubmitting(false);
@@ -590,7 +590,7 @@ export function LoginPage() {
                   </span>
                 </label>
                 <span className="font-label-sm text-[9.5px] font-semibold text-purple-300 bg-purple-950/60 border border-purple-500/30 px-2 py-0.5 rounded-full">
-                  HTTP-ONLY COOKIE
+                  PROTECTED SESSION
                 </span>
               </div>
 
