@@ -168,13 +168,13 @@ export function DashboardLayout() {
         {/* Brand Header */}
         <div className="p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-700/60 flex items-center justify-between gap-2">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md flex items-center justify-center shrink-0 overflow-hidden shadow-inner border border-slate-200/90 dark:border-slate-700 p-1">
+            <div className="w-10 h-10 rounded-2xl bg-sky-100/80 dark:bg-slate-800/80 flex items-center justify-center shrink-0 overflow-hidden shadow-md border border-white/85 dark:border-white/20 ring-1 ring-sky-300/40">
               <img
-                src="/emrms-logo.svg"
+                src="/medijigs-logo.jpg"
                 alt="MEDIJIGS Logo"
-                className="w-full h-full object-contain"
-                width="36"
-                height="36"
+                className="w-full h-full object-cover"
+                width="40"
+                height="40"
               />
             </div>
             <div className="flex flex-col">

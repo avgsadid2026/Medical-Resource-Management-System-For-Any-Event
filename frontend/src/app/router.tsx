@@ -47,9 +47,9 @@ function ProtectedShell() {
       <div className="min-h-screen bg-surface flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           <img
-            src="/emrms-logo.svg"
+            src="/medijigs-logo.jpg"
             alt="MEDIJIGS Logo"
-            className="w-10 h-10 object-contain"
+            className="w-12 h-12 rounded-2xl object-cover shadow-md ring-1 ring-white/50"
           />
           <p className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
             Verifying Command Session...

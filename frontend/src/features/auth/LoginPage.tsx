@@ -354,9 +354,9 @@ export function LoginPage() {
                   className="absolute -inset-1 rounded-xl bg-purple-600/30 blur-md pointer-events-none"
                 />
                 <img
-                  src="/emrms-logo.svg"
+                  src="/medijigs-logo.jpg"
                   alt="MEDIJIGS Logo"
-                  className="relative w-9 h-9 object-contain drop-shadow"
+                  className="relative w-11 h-11 rounded-2xl object-cover shadow-lg ring-1 ring-white/30"
                 />
               </div>
               <div className="flex flex-col min-w-0">
