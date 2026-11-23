@@ -325,14 +325,10 @@ export function DashboardLayout() {
 
   return (
     <div className="relative min-h-screen text-on-surface selection:bg-primary/20 overflow-x-hidden">
-      {/* Zero-Cost GPU Ambient Refractive Mesh Behind Entire Application */}
+      {/* Rich Zero-Cost GPU Ambient Refractive Mesh Behind Entire Application */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0 overflow-hidden opacity-90 dark:opacity-100"
-        style={{
-          backgroundImage:
-            'radial-gradient(520px circle at 8% 10%, rgba(56, 189, 248, 0.16), transparent 70%), radial-gradient(580px circle at 92% 22%, rgba(59, 130, 246, 0.15), transparent 72%), radial-gradient(540px circle at 38% 92%, rgba(20, 184, 166, 0.12), transparent 70%)',
-        }}
+        className="emrms-ambient-mesh pointer-events-none fixed inset-0 z-0 overflow-hidden"
       />
 
       {/* Desktop Sidebar */}

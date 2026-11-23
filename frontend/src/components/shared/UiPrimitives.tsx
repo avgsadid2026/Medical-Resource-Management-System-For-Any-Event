@@ -353,8 +353,8 @@ export function Modal({
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/35 dark:bg-black/65 backdrop-blur-md p-4">
-      <div className="bg-surface-container-lowest backdrop-blur-2xl w-full max-w-lg rounded-[24px] border border-white/85 dark:border-white/20 shadow-soft-lg overflow-hidden max-h-[90vh] flex flex-col">
-        <div className="px-6 py-4 bg-surface-container-low border-b border-white/60 dark:border-white/10 flex items-center justify-between">
+      <div className="emrms-glass-popover w-full max-w-lg rounded-[24px] overflow-hidden max-h-[90vh] flex flex-col">
+        <div className="px-6 py-4 bg-surface-container-low/60 border-b border-white/60 dark:border-white/10 flex items-center justify-between">
           <h2 className="font-headline text-[17px] font-bold text-on-surface">
             {title}
           </h2>

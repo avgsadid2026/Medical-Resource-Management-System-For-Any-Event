@@ -267,7 +267,7 @@ export function EmergencyAlertsPage() {
       )}
 
       {/* Triage SLA Reference Matrix */}
-      <div className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 shadow-sm overflow-hidden">
+      <div className="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 shadow-card overflow-hidden">
         <div className="px-4 py-3 bg-surface-container-low border-b border-outline-variant/20">
           <h3 className="font-headline-md text-headline-md text-on-surface">
             Event Triage &amp; Escalation Protocol Matrix

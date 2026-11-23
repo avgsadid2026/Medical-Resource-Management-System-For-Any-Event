@@ -181,8 +181,35 @@
     margin: 0;
     padding: 0;
     overscroll-behavior: none;
-    background-color: rgb(var(--color-surface));
+    background-color: #eef4fb;
     color: rgb(var(--color-on-surface));
+  }
+
+  html.dark,
+  html.dark body,
+  html[data-theme='dark'],
+  html[data-theme='dark'] body {
+    background-color: #060b18;
+  }
+
+  /* Rich Zero-Cost GPU Ambient Refractive Mesh for True Glassmorphism */
+  .emrms-ambient-mesh {
+    background-color: transparent;
+    background-image:
+      radial-gradient(620px circle at 6% 8%, rgba(56, 189, 248, 0.30), transparent 65%),
+      radial-gradient(680px circle at 92% 14%, rgba(99, 102, 241, 0.24), transparent 68%),
+      radial-gradient(620px circle at 76% 82%, rgba(20, 184, 166, 0.24), transparent 68%),
+      radial-gradient(520px circle at 18% 88%, rgba(244, 114, 182, 0.16), transparent 66%),
+      radial-gradient(460px circle at 50% 45%, rgba(59, 130, 246, 0.12), transparent 70%);
+  }
+
+  .dark .emrms-ambient-mesh {
+    background-image:
+      radial-gradient(660px circle at 8% 10%, rgba(14, 165, 233, 0.28), transparent 66%),
+      radial-gradient(720px circle at 90% 16%, rgba(99, 102, 241, 0.26), transparent 68%),
+      radial-gradient(640px circle at 74% 86%, rgba(20, 184, 166, 0.22), transparent 68%),
+      radial-gradient(540px circle at 16% 88%, rgba(139, 92, 246, 0.18), transparent 66%),
+      radial-gradient(480px circle at 48% 48%, rgba(37, 99, 235, 0.14), transparent 70%);
   }
 
   /* GPU Hardware-Accelerated View Transition for 120fps Theme Switching */
@@ -250,43 +277,45 @@
   input:not([type='checkbox']):not([type='radio']),
   select,
   textarea {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.56);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
     color: rgb(var(--color-on-surface));
-    border-color: rgba(226, 232, 240, 0.9);
+    border-color: rgba(255, 255, 255, 0.85);
     box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.85),
-      0 1px 2px rgba(15, 23, 42, 0.03);
+      inset 0 1px 1px rgba(255, 255, 255, 0.9),
+      0 2px 6px rgba(15, 23, 42, 0.04);
     transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   }
 
   .dark input:not([type='checkbox']):not([type='radio']),
   .dark select,
   .dark textarea {
-    background-color: rgba(15, 23, 42, 0.62);
-    border-color: rgba(148, 163, 184, 0.22);
+    background-color: rgba(15, 23, 42, 0.50);
+    border-color: rgba(255, 255, 255, 0.14);
     box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.08),
-      0 1px 3px rgba(0, 0, 0, 0.25);
+      inset 0 1px 1px rgba(255, 255, 255, 0.10),
+      0 2px 8px rgba(0, 0, 0, 0.28);
   }
 
   input:not([type='checkbox']):not([type='radio']):focus,
   select:focus,
   textarea:focus {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-color: rgba(37, 99, 235, 0.55);
+    background-color: rgba(255, 255, 255, 0.86);
+    border-color: rgba(37, 99, 235, 0.6);
     box-shadow:
-      0 0 0 3px rgba(37, 99, 235, 0.14),
-      inset 0 1px 1px rgba(255, 255, 255, 0.95);
+      0 0 0 3px rgba(37, 99, 235, 0.16),
+      inset 0 1px 1px rgba(255, 255, 255, 0.98);
   }
 
   .dark input:not([type='checkbox']):not([type='radio']):focus,
   .dark select:focus,
   .dark textarea:focus {
-    background-color: rgba(24, 36, 62, 0.82);
-    border-color: rgba(96, 165, 250, 0.6);
+    background-color: rgba(22, 35, 60, 0.78);
+    border-color: rgba(96, 165, 250, 0.65);
     box-shadow:
-      0 0 0 3px rgba(59, 130, 246, 0.22),
-      inset 0 1px 1px rgba(255, 255, 255, 0.14);
+      0 0 0 3px rgba(59, 130, 246, 0.24),
+      inset 0 1px 1px rgba(255, 255, 255, 0.16);
   }
 
   input::placeholder,
@@ -309,11 +338,11 @@
   }
 
   thead tr {
-    background-color: rgba(241, 245, 249, 0.65) !important;
+    background-color: rgba(255, 255, 255, 0.45) !important;
   }
 
   .dark thead tr {
-    background-color: rgba(15, 23, 42, 0.62) !important;
+    background-color: rgba(15, 23, 42, 0.52) !important;
   }
 
   tbody tr {
@@ -321,11 +350,11 @@
   }
 
   tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.55) !important;
+    background-color: rgba(255, 255, 255, 0.48) !important;
   }
 
   .dark tbody tr:hover {
-    background-color: rgba(59, 130, 246, 0.1) !important;
+    background-color: rgba(59, 130, 246, 0.12) !important;
   }
 
   /* Tabular numerals for timestamps, metrics, and clinical tables */
@@ -337,79 +366,115 @@
 }
 
 /* ============================================================================
-   SYSTEM-WIDE GLASSMORPHISM SURFACE ENGINE
-   Uses interpolatable background-color + shared specular highlight so Light <->
-   Dark theme transitions animate smoothly from frame 0 at 60fps without snapping.
+   SYSTEM-WIDE OPTICAL GLASSMORPHISM SURFACE ENGINE
+   Applies crisp frosted translucency, specular rim lighting, and soft depth
+   across every page, card, table, modal, sidebar, topbar, and popover.
    ============================================================================ */
 .bg-surface-container-lowest {
-  background-color: rgba(255, 255, 255, 0.68) !important;
+  background-color: rgba(255, 255, 255, 0.54) !important;
   background-image: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0) 60%
+    rgba(255, 255, 255, 0.52) 0%,
+    rgba(255, 255, 255, 0.14) 46%,
+    rgba(255, 255, 255, 0.03) 100%
   );
-  backdrop-filter: blur(16px) saturate(170%);
-  -webkit-backdrop-filter: blur(16px) saturate(170%);
-  border-color: rgba(255, 255, 255, 0.84) !important;
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border-color: rgba(255, 255, 255, 0.86) !important;
   box-shadow:
-    0 10px 30px -4px rgba(15, 23, 42, 0.06),
-    0 2px 6px -1px rgba(37, 99, 235, 0.03),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.88);
+    0 12px 32px -6px rgba(15, 23, 42, 0.08),
+    0 2px 8px -2px rgba(37, 99, 235, 0.05),
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 0 rgba(148, 163, 184, 0.16);
 }
 
 .dark .bg-surface-container-lowest {
-  background-color: rgba(17, 26, 46, 0.66) !important;
-  border-color: rgba(148, 163, 184, 0.2) !important;
+  background-color: rgba(15, 23, 42, 0.48) !important;
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.03) 46%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.16) !important;
   box-shadow:
-    0 14px 34px -6px rgba(0, 0, 0, 0.5),
-    0 2px 8px -1px rgba(0, 0, 0, 0.35),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+    0 16px 38px -8px rgba(0, 0, 0, 0.56),
+    0 2px 10px -2px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.35);
 }
 
 .bg-surface-container-low,
+.bg-surface-container-low\/40,
+.bg-surface-container-low\/50,
 .bg-surface-container-low\/60,
 .bg-surface-container-low\/70,
 .bg-surface-container-low\/80 {
-  background-color: rgba(248, 250, 252, 0.68) !important;
-  border-color: rgba(226, 232, 240, 0.85);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.44) !important;
+  border-color: rgba(255, 255, 255, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 1px 3px rgba(15, 23, 42, 0.03);
 }
 
 .dark .bg-surface-container-low,
+.dark .bg-surface-container-low\/40,
+.dark .bg-surface-container-low\/50,
 .dark .bg-surface-container-low\/60,
 .dark .bg-surface-container-low\/70,
 .dark .bg-surface-container-low\/80 {
-  background-color: rgba(15, 23, 42, 0.58) !important;
-  border-color: rgba(148, 163, 184, 0.18);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.07);
+  background-color: rgba(15, 23, 42, 0.44) !important;
+  border-color: rgba(255, 255, 255, 0.11);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 1px 4px rgba(0, 0, 0, 0.22);
+}
+
+.bg-surface-container {
+  background-color: rgba(241, 245, 249, 0.56) !important;
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.dark .bg-surface-container {
+  background-color: rgba(30, 41, 59, 0.50) !important;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .bg-surface-container-high {
-  background-color: rgba(226, 232, 240, 0.65) !important;
+  background-color: rgba(226, 232, 240, 0.56) !important;
 }
 
 .dark .bg-surface-container-high {
-  background-color: rgba(39, 55, 84, 0.62) !important;
+  background-color: rgba(39, 55, 84, 0.56) !important;
 }
 
 /* Dedicated Glass Shell Surfaces (Sidebar, Topbar, Pills, Footer) */
 .emrms-glass-sidebar {
-  background-color: rgba(255, 255, 255, 0.76);
+  background-color: rgba(255, 255, 255, 0.62);
   background-image: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.08) 100%
   );
-  backdrop-filter: blur(20px) saturate(175%);
-  -webkit-backdrop-filter: blur(20px) saturate(175%);
-  border-right: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 4px 0 28px -4px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(26px) saturate(195%);
+  -webkit-backdrop-filter: blur(26px) saturate(195%);
+  border-right: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    6px 0 32px -6px rgba(15, 23, 42, 0.07),
+    inset -1px 0 0 rgba(255, 255, 255, 0.65);
 }
 
 .dark .emrms-glass-sidebar {
-  background-color: rgba(11, 18, 33, 0.82);
-  border-right: 1px solid rgba(148, 163, 184, 0.18);
-  box-shadow: 4px 0 32px -4px rgba(0, 0, 0, 0.52);
+  background-color: rgba(9, 15, 29, 0.66);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-right: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow:
+    6px 0 36px -6px rgba(0, 0, 0, 0.58),
+    inset -1px 0 0 rgba(255, 255, 255, 0.06);
 }
 
 .emrms-glass-topbar {
@@ -422,72 +487,90 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-color: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px) saturate(175%);
-  -webkit-backdrop-filter: blur(20px) saturate(175%);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+  background-color: rgba(255, 255, 255, 0.58);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(26px) saturate(195%);
+  -webkit-backdrop-filter: blur(26px) saturate(195%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 24px -6px rgba(15, 23, 42, 0.06);
 }
 
 .dark .emrms-glass-topbar::before {
-  background-color: rgba(11, 18, 33, 0.78);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.45);
+  background-color: rgba(9, 15, 29, 0.64);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 0 6px 28px -6px rgba(0, 0, 0, 0.5);
 }
 
-/* Deep Frosted Glass Popover (Notifications & Floating Menus) */
+/* Deep Frosted Glass Popover (Notifications, Modals & Floating Menus) */
 .emrms-glass-popover {
-  background-color: rgba(255, 255, 255, 0.84) !important;
+  background-color: rgba(255, 255, 255, 0.74) !important;
   background-image: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0) 65%
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.12) 55%,
+    rgba(255, 255, 255, 0) 100%
   );
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.94) !important;
   box-shadow:
-    0 22px 48px -8px rgba(15, 23, 42, 0.16),
-    0 4px 14px -2px rgba(15, 23, 42, 0.07),
-    inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+    0 24px 54px -8px rgba(15, 23, 42, 0.18),
+    0 4px 16px -2px rgba(37, 99, 235, 0.08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98) !important;
 }
 
 .dark .emrms-glass-popover {
-  background-color: rgba(13, 21, 38, 0.84) !important;
+  background-color: rgba(11, 19, 36, 0.76) !important;
   background-image: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.07) 0%,
-    rgba(255, 255, 255, 0) 65%
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.02) 55%,
+    rgba(255, 255, 255, 0) 100%
   );
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow:
-    0 24px 56px -8px rgba(0, 0, 0, 0.72),
-    0 6px 18px -2px rgba(0, 0, 0, 0.48),
-    inset 0 1px 1px rgba(255, 255, 255, 0.16) !important;
+    0 26px 60px -8px rgba(0, 0, 0, 0.76),
+    0 6px 20px -2px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20) !important;
 }
 
 .emrms-glass-subpanel {
-  background-color: rgba(241, 245, 249, 0.78);
-  border: 1px solid rgba(226, 232, 240, 0.92);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.56);
+  backdrop-filter: blur(14px) saturate(170%);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 2px 8px -2px rgba(15, 23, 42, 0.04);
 }
 
 .dark .emrms-glass-subpanel {
-  background-color: rgba(24, 34, 54, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  background-color: rgba(20, 31, 54, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 2px 10px -2px rgba(0, 0, 0, 0.3);
 }
 
 .emrms-glass-footer {
-  background-color: rgba(248, 250, 252, 0.82);
-  border-top: 1px solid rgba(226, 232, 240, 0.88);
+  background-color: rgba(255, 255, 255, 0.50);
+  border-top: 1px solid rgba(255, 255, 255, 0.82);
 }
 
 .dark .emrms-glass-footer {
-  background-color: rgba(8, 13, 24, 0.86);
-  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  background-color: rgba(8, 13, 24, 0.62);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Visible, subtle horizontal scrollbars on wide data tables */

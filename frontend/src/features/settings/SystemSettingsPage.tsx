@@ -174,7 +174,7 @@ export function SystemSettingsPage() {
       )}
 
       {isLoading ? (
-        <div className="p-8 text-center bg-surface-container-lowest rounded-lg border border-outline-variant/30 text-on-surface-variant">
+        <div className="p-8 text-center bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 shadow-card text-on-surface-variant">
           Loading system configuration...
         </div>
       ) : (
@@ -344,7 +344,7 @@ export function SystemSettingsPage() {
           {/* Clinical Triage SLA Targets */}
           <form
             onSubmit={handleSaveSlas}
-            className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm space-y-4"
+            className="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-5 sm:p-6 shadow-card space-y-4"
           >
             <div className="border-b border-outline-variant/20 pb-3">
               <h2 className="font-headline-md text-headline-md text-on-surface">
@@ -406,7 +406,7 @@ export function SystemSettingsPage() {
           {/* Polling & Session Settings (Super Admin Only) */}
           <form
             onSubmit={handleSavePolling}
-            className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm space-y-4"
+            className="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-5 sm:p-6 shadow-card space-y-4"
           >
             <div className="border-b border-outline-variant/20 pb-3 flex items-center justify-between">
               <div>
@@ -475,7 +475,7 @@ export function SystemSettingsPage() {
           </form>
 
           {/* Multi-Event Readiness Card */}
-          <section className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm space-y-3">
+          <section className="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-5 sm:p-6 shadow-card space-y-3">
             <div className="border-b border-outline-variant/20 pb-3 flex items-center justify-between">
               <h2 className="font-headline-md text-headline-md text-on-surface">
                 About MEDIJIGS Platform

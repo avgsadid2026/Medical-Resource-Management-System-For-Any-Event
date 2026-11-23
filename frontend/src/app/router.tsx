@@ -77,7 +77,7 @@ function RoleGuard({
 
   if (!user || !hasRole(user.role, allowed)) {
     return (
-      <div className="max-w-xl mx-auto mt-12 bg-surface-container-lowest border border-error/30 rounded-lg p-space-lg shadow-sm space-y-3">
+      <div className="max-w-xl mx-auto mt-12 bg-surface-container-lowest border border-error/30 rounded-[22px] p-6 shadow-card space-y-3">
         <div className="flex items-center gap-2 text-error">
           <ShieldAlert className="w-6 h-6 shrink-0" />
           <h1 className="font-headline-md text-headline-md">

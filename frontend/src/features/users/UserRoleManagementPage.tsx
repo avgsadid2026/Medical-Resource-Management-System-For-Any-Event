@@ -341,7 +341,7 @@ export function UserRoleManagementPage() {
 
         {/* 4-Col Right Sidebar: RBAC Summary + Active Sessions */}
         <div className="xl:col-span-4 space-y-space-md">
-          <section className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm">
+          <section className="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-5 shadow-card">
             <h2 className="font-headline-md text-headline-md text-on-surface mb-3">
               Role Permissions Overview
             </h2>
@@ -362,7 +362,7 @@ export function UserRoleManagementPage() {
             </div>
           </section>
 
-          <section className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md shadow-sm">
+          <section className="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-5 shadow-card">
             <div className="flex items-center justify-between mb-3">
               <h2 className="font-headline-md text-headline-md text-on-surface">
                 Active User Logins
