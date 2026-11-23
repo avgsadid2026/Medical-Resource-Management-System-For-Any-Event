@@ -20,12 +20,12 @@ import { ApiError } from '@/lib/apiClient';
 
 const ROLE_OPTIONS = [
   {
-    label: 'System Administrator',
+    label: 'Super Admin',
     email: 'admin@baust-demo.edu.bd',
     icon: 'admin_panel_settings',
   },
   {
-    label: 'Medical Coordinator',
+    label: 'Medical Admin',
     email: 'e.vance@baust-demo.edu.bd',
     icon: 'verified_user',
   },
@@ -40,12 +40,12 @@ const ROLE_OPTIONS = [
     icon: 'clinical_notes',
   },
   {
-    label: 'Emergency Dispatcher',
+    label: 'Dispatcher',
     email: 'dispatch@baust-demo.edu.bd',
     icon: 'local_shipping',
   },
   {
-    label: 'Medical Volunteer',
+    label: 'Volunteer',
     email: 'volunteer@baust-demo.edu.bd',
     icon: 'volunteer_activism',
   },

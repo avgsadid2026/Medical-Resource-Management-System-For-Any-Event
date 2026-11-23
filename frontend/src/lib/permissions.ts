@@ -2,11 +2,11 @@ import type { UserRole } from '@/types/emrms';
 
 export const ROLE_LABELS: Record<UserRole, string> = {
   SUPER_ADMIN: 'Super Admin',
-  MEDICAL_ADMIN: 'Medical Admin / CMO',
-  DOCTOR: 'On-Duty Physician',
-  NURSE: 'Triage Lead Nurse',
-  DISPATCHER: 'Dispatcher / Logistics',
-  VOLUNTEER: 'Campus Volunteer',
+  MEDICAL_ADMIN: 'Medical Admin',
+  DOCTOR: 'Doctor',
+  NURSE: 'Nurse',
+  DISPATCHER: 'Dispatcher',
+  VOLUNTEER: 'Volunteer',
 };
 
 export interface NavItem {
